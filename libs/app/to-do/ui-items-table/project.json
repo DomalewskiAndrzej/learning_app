@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/app/to-do/ui-items-table/src",
+  "prefix": "app",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app/to-do/ui-items-table"],
+      "options": {
+        "jestConfig": "libs/app/to-do/ui-items-table/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/app/to-do/ui-items-table/**/*.ts",
+          "libs/app/to-do/ui-items-table/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

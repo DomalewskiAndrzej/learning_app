@@ -1,0 +1,11 @@
+<div class="container">
+  <button (click)="onOpenTodo()" [matTooltip]="'Preview Todo'" class="container__btn" mat-raised-button>
+    <mat-icon>open_in_new</mat-icon>
+  </button>
+  <button (click)="onOpenTodo(true)" [matTooltip]="'Edit Todo'" class="container__btn" mat-raised-button>
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button (click)="onDeleteTodo()" [matTooltip]="'Delete Todo'" class="container__btn" mat-raised-button>
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

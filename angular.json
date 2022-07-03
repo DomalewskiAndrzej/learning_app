@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "app": "apps/app",
+    "app-e2e": "apps/app-e2e",
+    "app-starting-page-feature": "libs/app/starting-page/feature",
+    "app-starting-page-ui-starting-page": "libs/app/starting-page/ui-starting-page",
+    "app-to-do-data-access": "libs/app/to-do/data-access",
+    "app-to-do-domain": "libs/app/to-do/domain",
+    "app-to-do-feature": "libs/app/to-do/feature",
+    "app-to-do-ui-action-buttons": "libs/app/to-do/ui-action-buttons",
+    "app-to-do-ui-todo-preview-dialog": "libs/app/to-do/ui-todo-preview-dialog",
+    "app-to-do-ui-items-table": "libs/app/to-do/ui-items-table",
+    "app-to-do-ui-items-table-buttons": "libs/app/to-do/ui-items-table-buttons",
+    "app-to-do-ui-todo-add-dialog": "libs/app/to-do/ui-todo-add-dialog",
+    "shared-data-access": "libs/shared/data-access",
+    "shared-domain": "libs/shared/domain"
+  }
+}
