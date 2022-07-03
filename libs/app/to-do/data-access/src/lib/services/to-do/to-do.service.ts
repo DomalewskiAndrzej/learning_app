@@ -9,21 +9,28 @@ export class TodoService {
     loadTodos: '',
     addToDo: '',
     deleteTodo: '',
+    editTodo: '',
   };
 
   constructor(private http: HttpClient) {}
 
-  loadTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(this.endpoints.loadTodos);
+  loadTodos(offset: number): Observable<Todo[]> {
+    return this.http.get<Todo[]>(this.endpoints.loadTodos, {
+      params: { offset },
+    });
   }
 
   addTodo(todo: Todo): Observable<Todo> {
     return this.http.post<Todo>(this.endpoints.addToDo, todo);
   }
 
-  deleteTodo(id: string): Observable<void> {
+  deleteTodos(ids: string[]): Observable<void> {
     return this.http.delete<void>(this.endpoints.deleteTodo, {
-      params: { id },
+      params: { ids },
     });
+  }
+
+  editTodo(todo: Todo): Observable<Todo> {
+    return this.http.patch<Todo>(this.endpoints.editTodo, todo);
   }
 }
