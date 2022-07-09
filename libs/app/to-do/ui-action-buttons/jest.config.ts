@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'app-to-do-ui-action-buttons',
+  displayName: 'app-feature-to-do-table-ui-action-buttons',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +9,8 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/app/to-do/ui-action-buttons',
+  coverageDirectory:
+    '../../../../coverage/libs/app/feature-to-do-table/ui-action-buttons',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

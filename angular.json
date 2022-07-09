@@ -4,17 +4,23 @@
   "projects": {
     "app": "apps/app",
     "app-e2e": "apps/app-e2e",
+    "app-shared-data-access": "libs/app/shared/data-access",
+    "app-shared-domain": "libs/app/shared/domain",
+    "app-shared-feature": "libs/app/shared/feature",
+    "app-shared-resources": "libs/app/shared/resources",
+    "app-shared-ui-confirmation-dialog": "libs/app/shared/ui-confirmation-dialog",
+    "app-shared-ui-sidenav": "libs/app/shared/ui-sidenav",
+    "app-shared-ui-toolbar": "libs/app/shared/ui-toolbar",
     "app-starting-page-feature": "libs/app/starting-page/feature",
     "app-starting-page-ui-starting-page": "libs/app/starting-page/ui-starting-page",
     "app-to-do-data-access": "libs/app/to-do/data-access",
     "app-to-do-domain": "libs/app/to-do/domain",
     "app-to-do-feature": "libs/app/to-do/feature",
+    "app-to-do-to-do-shell": "libs/app/to-do/to-do-shell",
     "app-to-do-ui-action-buttons": "libs/app/to-do/ui-action-buttons",
-    "app-to-do-ui-todo-preview-dialog": "libs/app/to-do/ui-todo-preview-dialog",
-    "app-to-do-ui-items-table": "libs/app/to-do/ui-items-table",
-    "app-to-do-ui-items-table-buttons": "libs/app/to-do/ui-items-table-buttons",
-    "app-to-do-ui-todo-add-dialog": "libs/app/to-do/ui-todo-add-dialog",
-    "shared-data-access": "libs/shared/data-access",
-    "shared-domain": "libs/shared/domain"
+    "app-to-do-ui-to-do-add-dialog": "libs/app/to-do/ui-to-do-add-dialog",
+    "app-to-do-ui-to-do-preview": "libs/app/to-do/ui-to-do-preview",
+    "app-to-do-ui-to-do-table": "libs/app/to-do/ui-to-do-table",
+    "app-to-do-ui-to-do-table-buttons": "libs/app/to-do/ui-to-do-table-buttons"
   }
 }

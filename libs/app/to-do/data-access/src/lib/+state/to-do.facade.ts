@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Todo } from '@app/app/to-do/domain';
+import { Todo, TodoLoad } from '@app/app/to-do/domain';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { toDoQuery } from './to-do.selectors';
@@ -8,19 +8,37 @@ import { actionsFromTodo } from './to-do.actions';
 
 @Injectable()
 export class TodoFacade {
-  getTodos: Observable<Todo[]> = this.store.pipe(select(toDoQuery.getTodos));
+  getTodos$: Observable<Todo[]> = this.store.pipe(select(toDoQuery.getTodos));
+  getSelectedTodos$: Observable<Todo[]> = this.store.pipe(
+    select(toDoQuery.getSelectedTodos)
+  );
+  getSelectedTodosUUID$: Observable<string[]> = this.store.pipe(
+    select(toDoQuery.getSelectedTodosUUID)
+  );
 
   constructor(private store: Store<TodoPartialState>) {}
 
-  loadToDdos(payload: any): void {
+  loadTodos(payload: TodoLoad): void {
     this.store.dispatch(actionsFromTodo.loadTodos({ payload }));
   }
 
-  addToDdo(payload: Todo): void {
+  addTodo(payload: Todo): void {
     this.store.dispatch(actionsFromTodo.addTodo({ payload }));
+  }
+
+  editTodo(payload: Todo): void {
+    this.store.dispatch(actionsFromTodo.editTodo({ payload }));
   }
 
   deleteTodo(payload: string): void {
     this.store.dispatch(actionsFromTodo.deleteTodo({ payload }));
+  }
+
+  deleteTodos(payload: string[]): void {
+    this.store.dispatch(actionsFromTodo.deleteTodos({ payload }));
+  }
+
+  selectTodos(payload: Todo[]): void {
+    this.store.dispatch(actionsFromTodo.selectTodos({ payload }));
   }
 }

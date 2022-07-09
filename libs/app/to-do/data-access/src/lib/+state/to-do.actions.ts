@@ -1,9 +1,9 @@
 import { createAction, props } from '@ngrx/store';
-import { Todo } from '@app/app/to-do/domain';
+import { Todo, TodoLoad } from '@app/app/to-do/domain';
 
 export const loadTodos = createAction(
   '[Todo] Load Todos',
-  props<{ payload: any }>()
+  props<{ payload: TodoLoad }>()
 );
 
 export const loadTodosSuccess = createAction(
@@ -46,6 +46,41 @@ export const deleteTodoFailure = createAction(
   props<{ error: any }>()
 );
 
+export const deleteTodos = createAction(
+  '[Todo] Delete Todos',
+  props<{ payload: string[] }>()
+);
+
+export const deleteTodosSuccess = createAction(
+  '[Todo] Delete Todos Success',
+  props<{ payload: string[] }>()
+);
+
+export const deleteTodosFailure = createAction(
+  '[Todo] Delete Todos Failure',
+  props<{ error: any }>()
+);
+
+export const editTodo = createAction(
+  '[Todo] Edit Todo',
+  props<{ payload: Todo }>()
+);
+
+export const editTodoSuccess = createAction(
+  '[Todo] Edit Todo Success',
+  props<{ payload: Todo }>()
+);
+
+export const editTodoFailure = createAction(
+  '[Todo] Edit Todo Failure',
+  props<{ error: any }>()
+);
+
+export const selectTodos = createAction(
+  '[Todo] Select Todos',
+  props<{ payload: Todo[] }>()
+);
+
 export const actionsFromTodo = {
   loadTodos,
   loadTodosSuccess,
@@ -56,4 +91,11 @@ export const actionsFromTodo = {
   deleteTodo,
   deleteTodoSuccess,
   deleteTodoFailure,
+  deleteTodos,
+  deleteTodosSuccess,
+  deleteTodosFailure,
+  editTodo,
+  editTodoSuccess,
+  editTodoFailure,
+  selectTodos,
 };

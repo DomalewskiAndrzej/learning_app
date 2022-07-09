@@ -37,6 +37,7 @@
     "eslint-plugin-jsdoc": "^39.3.3",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-unicorn": "^42.0.0",
+    "firebase": "^9.9.0",
     "g": "^2.0.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.0.0",
