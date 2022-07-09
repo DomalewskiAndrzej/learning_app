@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/app/to-do/to-do-shell/src",
+  "prefix": "app",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app/to-do/to-do-shell"],
+      "options": {
+        "jestConfig": "libs/app/to-do/to-do-shell/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/app/to-do/to-do-shell/**/*.ts",
+          "libs/app/to-do/to-do-shell/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

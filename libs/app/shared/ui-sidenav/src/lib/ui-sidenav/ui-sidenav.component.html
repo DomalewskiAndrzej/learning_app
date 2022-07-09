@@ -1,0 +1,37 @@
+<mat-sidenav-container autosize="true" class="container">
+  <mat-sidenav [disableClose]="sidenav" [opened]="sidenav" class="sidenav" mode="side">
+    <div class="sidenav__navigation">
+      <button
+        (click)="isExpanded = !isExpanded"
+        class="sidenav__content--btn"
+        color="primary"
+        mat-raised-button
+        type="button"
+      >
+        <mat-icon>compare_arrows</mat-icon>
+      </button>
+      <mat-nav-list class="navigation-list">
+        <mat-list-item
+          (click)="onNavigateTo(link.value)"
+          *ngFor="let link of links | keyvalue"
+          [class.active]="routingUrl === link.value.path"
+          class="navigation-list__item"
+        >
+          <a *ngIf="isExpanded; else icon"
+          >
+            navigate to:
+            <strong>
+              {{ link.value.name }}
+            </strong></a
+          >
+          <ng-template #icon>
+            <mat-icon>{{ link.value.icon }}</mat-icon>
+          </ng-template>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav__content">
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

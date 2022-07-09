@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/app/shared/feature/src",
+  "prefix": "app",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app/shared/feature"],
+      "options": {
+        "jestConfig": "libs/app/shared/feature/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/app/shared/feature/**/*.ts",
+          "libs/app/shared/feature/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

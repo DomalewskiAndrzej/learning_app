@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'app-to-do-domain',
+  displayName: 'app-feature-to-do-table-domain',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/app/to-do/domain',
+  coverageDirectory: '../../../../coverage/libs/app/feature-to-do-table/domain',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

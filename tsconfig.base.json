@@ -8,58 +8,52 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
+    "strictNullChecks": false,
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@app/app/shared/feature": ["libs/app/shared/feature/src/index.ts"],
+      "@app/app/shared/ui-confirmation-dialog": [
+        "libs/app/shared/ui-confirmation-dialog/src/index.ts"
+      ],
+      "@app/app/shared/ui-sidenav": ["libs/app/shared/ui-sidenav/src/index.ts"],
+      "@app/app/shared/ui-toolbar": ["libs/app/shared/ui-toolbar/src/index.ts"],
       "@app/app/starting-page/feature": [
         "libs/app/starting-page/feature/src/index.ts"
       ],
       "@app/app/starting-page/ui-starting-page": [
         "libs/app/starting-page/ui-starting-page/src/index.ts"
       ],
-      "@app/app/to-do/data-access": [
-        "libs/app/to-do/data-access/src/index.ts"
-      ],
-      "@app/app/to-do/domain": [
-        "libs/app/to-do/domain/src/index.ts"
-      ],
-      "@app/app/to-do/feature": [
-        "libs/app/to-do/feature/src/index.ts"
-      ],
+      "@app/app/to-do/data-access": ["libs/app/to-do/data-access/src/index.ts"],
+      "@app/app/to-do/domain": ["libs/app/to-do/domain/src/index.ts"],
+      "@app/app/to-do/feature": ["libs/app/to-do/feature/src/index.ts"],
+      "@app/app/to-do/shell": ["libs/app/to-do/shell/src/index.ts"],
+      "@app/app/to-do/to-do-shell": ["libs/app/to-do/to-do-shell/src/index.ts"],
       "@app/app/to-do/ui-action-buttons": [
         "libs/app/to-do/ui-action-buttons/src/index.ts"
       ],
-      "@app/app/to-do/ui-todo-preview-dialog": [
-        "libs/app/to-do/ui-todo-preview-dialog/src/index.ts"
+      "@app/app/to-do/ui-to-do-add-dialog": [
+        "libs/app/to-do/ui-to-do-add-dialog/src/index.ts"
       ],
-      "@app/app/to-do/ui-items-table": [
-        "libs/app/to-do/ui-items-table/src/index.ts"
+      "@app/app/to-do/ui-to-do-preview": [
+        "libs/app/to-do/ui-to-do-preview/src/index.ts"
       ],
-      "@app/app/to-do/ui-items-table-buttons": [
-        "libs/app/to-do/ui-items-table-buttons/src/index.ts"
+      "@app/app/to-do/ui-to-do-table": [
+        "libs/app/to-do/ui-to-do-table/src/index.ts"
       ],
-      "@app/app/to-do/ui-todo-add-dialog": [
-        "libs/app/to-do/ui-todo-add-dialog/src/index.ts"
+      "@app/app/to-do/ui-to-do-table-buttons": [
+        "libs/app/to-do/ui-to-do-table-buttons/src/index.ts"
       ],
-      "@app/libs/app/to-do/domain": [
-        "libs/libs/app/to-do/domain/src/index.ts"
-      ],
-      "@app/shared/data-access": [
-        "libs/shared/data-access/src/index.ts"
-      ],
-      "@app/shared/domain": [
-        "libs/shared/domain/src/index.ts"
-      ]
+      "@app/libs/app/to-do/domain": ["libs/libs/app/to-do/domain/src/index.ts"],
+      "@app/shared/data-access": ["libs/app/shared/data-access/src/index.ts"],
+      "@app/shared/domain": ["libs/app/shared/domain/src/index.ts"],
+      "@app/shared/resources": ["libs/app/shared/resources/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules", "tmp"]
+  "exclude": ["node_modules", "tmp"]
 }

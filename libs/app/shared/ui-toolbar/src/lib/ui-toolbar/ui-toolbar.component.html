@@ -1,0 +1,16 @@
+<mat-toolbar class="toolbar">
+  <div class="toolbar__back">
+    <button (click)="onNavigateBack()" *ngIf='!sidenav' [matTooltip]="'Navigate back'" mat-icon-button>
+      <mat-icon>keyboard_backspace
+      </mat-icon>
+    </button>
+  </div>
+  <button [matTooltip]="'Notifications'" mat-icon-button>
+    <mat-icon [matBadge]="10" matBadgeColor="warn" matBadgePosition="after" matBadgeSize="small">notifications
+    </mat-icon>
+  </button>
+</mat-toolbar>
+<div class="content">
+  <ng-content></ng-content>
+</div>
+
