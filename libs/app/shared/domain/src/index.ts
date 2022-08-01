@@ -8,6 +8,7 @@ export * from './lib/utils/enums/links-names.enum';
 export * from './lib/utils/interfaces/link.interface';
 export * from './lib/utils/interfaces/notification.interface';
 export * from './lib/utils/interfaces/paginator-options.interface';
+export * from './lib/utils/interfaces/load-items.interface';
 
 // SERVICES
 export * from './lib/services/snackbar.service';

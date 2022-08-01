@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Todo, TodoLoad } from '@app/app/to-do/domain';
+import { Todo } from '@app/app/to-do/domain';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { toDoQuery } from './to-do.selectors';
 import { TodoPartialState } from './to-do.reducer';
 import { actionsFromTodo } from './to-do.actions';
+import { LoadItems } from '@app/shared/domain';
 
 @Injectable()
 export class TodoFacade {
@@ -25,7 +26,7 @@ export class TodoFacade {
     this.store.dispatch(actionsFromTodo.startTodo(todo));
   }
 
-  loadTodos(payload: TodoLoad): void {
+  loadTodos(payload: LoadItems): void {
     this.store.dispatch(actionsFromTodo.loadTodos({ payload }));
   }
 

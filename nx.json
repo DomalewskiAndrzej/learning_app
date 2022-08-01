@@ -6,7 +6,7 @@
     "defaultBase": "master"
   },
   "cli": {
-    "defaultCollection": "@nrwl/schematics",
+    "defaultCollection": "@schematics/angular",
     "packageManager": "npm"
   },
   "implicitDependencies": {
@@ -20,42 +20,38 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
         "accessToken": "MzcxNGE3MzItMGNhNy00YWJiLThjOWUtY2IzZjkyMWE5OTBjfHJlYWQtd3JpdGU="
       }
     }
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     }
   },
   "generators": {
-    "@nrwl/schematics:library": {
-      "unitTestRunner": "jest",
-      "framework": "angular",
-      "style": "scss"
-    },
-    "@nrwl/schematics:application": {
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
     },
-    "@schematics/angular:component": {
-      "style": "scss"
-    },
-    "@schematics/angular:directive": {},
     "@nrwl/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:application": {
-      "style": "css",
-      "linter": "eslint",
       "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
+      "buildable": true
     },
     "@nrwl/angular:component": {
-      "style": "scss"
+      "style": "scss",
+      "changeDetection": "OnPush"
     }
   }
 }

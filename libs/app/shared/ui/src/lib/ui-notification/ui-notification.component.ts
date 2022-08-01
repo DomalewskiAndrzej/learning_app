@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
+import { Todo } from '@app/app/to-do/domain';
 
 @Component({
   selector: 'app-ui-notification',
@@ -7,5 +14,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiNotificationComponent {
-  constructor() {}
+  @Input() notifications: any[];
+  @Input() todosInProgress: Todo[];
+  @Output() loadTodosInProgress = new EventEmitter<void>();
+  @Output() loadNotifications = new EventEmitter<void>();
+
+  onLoadMoreItems(): void {
+    this.notifications
+      ? this.loadNotifications.emit()
+      : this.loadTodosInProgress.emit();
+  }
 }

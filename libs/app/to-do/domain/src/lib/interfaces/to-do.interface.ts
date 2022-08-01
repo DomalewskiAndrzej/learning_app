@@ -11,6 +11,7 @@ export interface Todo {
   inProgress: boolean;
   uuid: string;
   dateOfStart?: number;
+  information?: string;
 }
 
 type zero_three = '0' | '1' | '2' | '3';

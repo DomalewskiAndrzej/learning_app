@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Link, LINKS } from '@app/shared/domain';
+import { Link, LINKS, LoadItems } from '@app/shared/domain';
 import {
   HomeFacade,
   NotificationsFacade,
@@ -37,5 +37,13 @@ export class LayoutFeatureComponent implements OnInit {
 
   navigateTo(link: Link): void {
     this.routingFacade.navigate(link);
+  }
+
+  loadTodosInProgress(loadItems: LoadItems): void {
+    this.notificationsFacade.loadTodosInProgress(loadItems);
+  }
+
+  loadNotifications(loadItems: LoadItems): void {
+    this.notificationsFacade.loadNotifications(loadItems);
   }
 }

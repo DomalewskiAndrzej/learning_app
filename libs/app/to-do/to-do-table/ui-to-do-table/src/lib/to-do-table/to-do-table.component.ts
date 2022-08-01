@@ -7,12 +7,12 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Todo, TodoLoad } from '@app/app/to-do/domain';
+import { Todo } from '@app/app/to-do/domain';
 import { MatPaginator } from '@angular/material/paginator';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { appConfig } from '@app/shared/resources';
-import { PaginatorOptions } from '@app/shared/domain';
+import { LoadItems, PaginatorOptions } from '@app/shared/domain';
 
 @Component({
   selector: 'app-to-do-table',
@@ -22,7 +22,7 @@ import { PaginatorOptions } from '@app/shared/domain';
 })
 export class TodoTableComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @Output() loadTodos = new EventEmitter<TodoLoad>();
+  @Output() loadTodos = new EventEmitter<LoadItems>();
   @Output() openTodos = new EventEmitter<Todo[]>();
   @Output() deleteTodos = new EventEmitter<string[]>();
   @Output() deleteTodo = new EventEmitter<string>();

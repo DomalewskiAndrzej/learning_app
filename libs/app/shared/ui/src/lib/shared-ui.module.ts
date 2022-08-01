@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { UiNotificationComponent } from './ui-notification/ui-notification.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatListModule,
     MatMenuModule,
     MatExpansionModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     UiConfirmationDialogComponent,

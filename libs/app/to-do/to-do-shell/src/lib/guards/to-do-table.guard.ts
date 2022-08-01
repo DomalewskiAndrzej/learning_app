@@ -22,7 +22,7 @@ export class TodoTableGuard implements CanActivate {
         take(1)
       )
       .subscribe(() =>
-        this.todoFacade.loadTodos({ offset: appConfig.firstItemLoad })
+        this.todoFacade.loadTodos({ offset: appConfig.itemsPerLoad })
       );
     return of(true);
   }

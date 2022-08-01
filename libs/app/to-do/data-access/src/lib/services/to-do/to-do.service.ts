@@ -39,7 +39,7 @@ export class ToDoService {
     return timer(1000).pipe(
       map(() => {
         if (
-          offset === appConfig.firstItemLoad &&
+          offset === appConfig.itemsPerLoad &&
           this.lastOffset !== offset &&
           !this.todosMemory
         ) {

@@ -5,6 +5,8 @@
   [sidenav]="sidenav$ | async"
 >
   <app-ui-toolbar
+    (loadNotifications)="loadNotifications($event)"
+    (loadTodosInProgress)="loadTodosInProgress($event)"
     (navigateBack)="navigateBack()"
     [notificationsQuantity]="notificationsQuantity$ | async"
     [sidenav]="sidenav$ | async"

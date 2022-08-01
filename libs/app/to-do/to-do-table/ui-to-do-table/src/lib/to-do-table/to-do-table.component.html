@@ -79,14 +79,7 @@
   </div>
   <mat-spinner *ngIf="requestInProgress"></mat-spinner>
   <div class="container__paginator">
-    <button
-      (click)="onLoadTodos(dataSource.data.length + 5)"
-      class="container__paginator--btn"
-      mat-raised-button
-      type="button"
-    >
-      Load more items
-    </button>
+    <div class="container__paginator--btn"></div>
     <mat-paginator
       (page)="onLoadTodos(paginator.pageSize)"
       [length]="paginatorOptions.length"

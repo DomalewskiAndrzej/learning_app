@@ -1,5 +1,5 @@
 export const appConfig = {
-  firstItemLoad: 5,
+  itemsPerLoad: 5,
   todoTableDisplayedColums: [
     'id',
     'name',

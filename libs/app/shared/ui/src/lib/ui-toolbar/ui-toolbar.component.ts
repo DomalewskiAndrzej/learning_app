@@ -6,6 +6,9 @@ import {
   Output,
 } from '@angular/core';
 import { Todo } from '@app/app/to-do/domain';
+import { LoadItems } from '@app/shared/domain';
+import { appConfig } from '@app/shared/resources';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-ui-toolbar',
@@ -15,11 +18,11 @@ import { Todo } from '@app/app/to-do/domain';
 })
 export class UiToolbarComponent {
   @Output() navigateBack = new EventEmitter<void>();
-  @Output() openTodosInProgress = new EventEmitter<void>();
-  @Output() openNotifications = new EventEmitter<void>();
+  @Output() loadTodosInProgress = new EventEmitter<LoadItems>();
+  @Output() loadNotifications = new EventEmitter<LoadItems>();
   @Input() sidenav: boolean;
-  @Input() notifications: Notification[];
-  @Input() todosInProgress: Todo[];
+  @Input() notifications: Observable<Notification[]>;
+  @Input() todosInProgress: Observable<Todo[]>;
   @Input() notificationsQuantity: number;
   @Input() todosInProgressQuantity: number;
 
@@ -27,11 +30,11 @@ export class UiToolbarComponent {
     this.navigateBack.emit();
   }
 
-  onOpenTodosInProgress(): void {
-    this.openTodosInProgress.emit();
+  onLoadTodosInProgress(): void {
+    this.loadTodosInProgress.emit({ offset: appConfig.itemsPerLoad });
   }
 
-  onOpenNotifications(): void {
-    this.openNotifications.emit();
+  onLoadNotifications(): void {
+    this.loadNotifications.emit({ offset: appConfig.itemsPerLoad });
   }
 }

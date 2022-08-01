@@ -13,8 +13,8 @@
   </div>
   <div>
     <button
-      (click)="onOpenTodosInProgress()"
-      [matMenuTriggerFor]="todosInProgress"
+      (click)="onLoadTodosInProgress()"
+      [matMenuTriggerFor]="notificationsMenu"
       [matTooltip]="'Todos in progress'"
       class="toolbar__button"
       mat-icon-button
@@ -30,15 +30,15 @@
       </mat-icon>
     </button>
     <button
-      (click)="onOpenNotifications()"
-      [matMenuTriggerFor]="notifications"
+      (click)="onLoadNotifications()"
+      [matMenuTriggerFor]="notificationsMenu"
       [matTooltip]="'Notifications'"
       class="toolbar__button"
       mat-icon-button
       type="button"
     >
       <mat-icon
-        [matBadgeHidden]="!notifications"
+        [matBadgeHidden]="!notificationsMenu"
         [matBadge]="notificationsQuantity"
         matBadgeColor="warn"
         matBadgePosition="after"
@@ -52,20 +52,16 @@
   <ng-content></ng-content>
 </div>
 <mat-menu
-  #todosInProgress="matMenu"
+  #notificationsMenu="matMenu"
   class="menu-notifications"
   xPosition="before"
 >
   <ng-template matMenuContent>
-    <app-ui-notification></app-ui-notification>
-  </ng-template>
-</mat-menu>
-<mat-menu
-  #notifications="matMenu"
-  class="menu-notifications"
-  xPosition="before"
->
-  <ng-template matMenuContent>
-    <app-ui-notification></app-ui-notification>
+    <app-ui-notification
+      (loadNotifications)="onLoadNotifications()"
+      (loadTodosInProgress)="onLoadTodosInProgress()"
+      [notifications]="notifications | async"
+      [todosInProgress]="todosInProgress | async"
+    ></app-ui-notification>
   </ng-template>
 </mat-menu>

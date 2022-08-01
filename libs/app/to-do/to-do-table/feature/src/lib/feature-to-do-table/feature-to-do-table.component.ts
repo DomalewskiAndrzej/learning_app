@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { filter } from 'rxjs';
-import { Todo, TodoLoad } from '@app/app/to-do/domain';
+import { Todo } from '@app/app/to-do/domain';
 import { TodoFacade } from '@app/app/to-do/data-access';
 import { HomeFacade, RoutingFacade } from '@app/shared/data-access';
 import { TodoDialogService } from '@app/app/to-do/shared/services';
+import { LoadItems } from '@app/shared/domain';
 
 @Component({
   selector: 'app-feature-feature-to-do-table-table',
@@ -25,8 +26,8 @@ export class FeatureToDoTableComponent {
     private todoDialogService: TodoDialogService
   ) {}
 
-  loadTodos(todoLoad: TodoLoad): void {
-    this.todoFacade.loadTodos(todoLoad);
+  loadTodos(LoadItems: LoadItems): void {
+    this.todoFacade.loadTodos(LoadItems);
   }
 
   addTodo(): void {

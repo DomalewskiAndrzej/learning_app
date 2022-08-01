@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { NotificationsState } from './notifications.reducer';
 import { actionsFromNotifications } from './notifications.actions';
 import { notificationsQuery } from './notifications.selectors';
+import { LoadItems } from '@app/shared/domain';
 
 @Injectable()
 export class NotificationsFacade {
@@ -22,4 +23,8 @@ export class NotificationsFacade {
   loadTodosInProgressQuantity(): void {
     this.store.dispatch(actionsFromNotifications.loadTodosInProgressQuantity());
   }
+
+  loadTodosInProgress(loadItems: LoadItems): void {}
+
+  loadNotifications(loadItems: LoadItems): void {}
 }

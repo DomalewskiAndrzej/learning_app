@@ -1,9 +1,10 @@
 import { createAction, props } from '@ngrx/store';
-import { Todo, TodoLoad } from '@app/app/to-do/domain';
+import { Todo } from '@app/app/to-do/domain';
+import { LoadItems } from '@app/shared/domain';
 
 export const loadTodos = createAction(
   '[Todo] Load Todos',
-  props<{ payload: TodoLoad }>()
+  props<{ payload: LoadItems }>()
 );
 
 export const loadTodosSuccess = createAction(

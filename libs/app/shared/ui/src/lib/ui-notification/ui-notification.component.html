@@ -1,9 +1,16 @@
-<mat-expansion-panel (click)="$event.stopPropagation()" class="container">
-  <mat-expansion-panel-header>
-    <mat-panel-title> This is the expansion title</mat-panel-title>
-    <mat-panel-description>
-      This is a summary of the content
-    </mat-panel-description>
-    <ng-template matExpansionPanelContent> Hi how are you! :P </ng-template>
-  </mat-expansion-panel-header>
-</mat-expansion-panel>
+<div *ngIf="notifications; else spinner" class="container">
+  <mat-expansion-panel (click)="$event.stopPropagation()">
+    <mat-expansion-panel-header *ngFor="let notification of notifications">
+      <mat-panel-title> {{ notification.name }}</mat-panel-title>
+      <mat-panel-description>
+        {{ notification.information }}
+      </mat-panel-description>
+      <ng-template matExpansionPanelContent>
+        {{ notification.description }}</ng-template
+      >
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+</div>
+<ng-template #spinner>
+  <mat-spinner></mat-spinner>
+</ng-template>
