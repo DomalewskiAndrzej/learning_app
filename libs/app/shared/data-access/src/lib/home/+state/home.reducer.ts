@@ -1,25 +1,30 @@
 import { createReducer, on } from '@ngrx/store';
-import { homeActions } from './home.actions';
-import { TodoState } from '../../../../../../to-do/data-access/src/lib/+state/to-do.reducer';
+import { actionsFromHome } from './home.actions';
 
 export const homeFeatureKey = 'home';
 
 export interface HomeState {
   sidenav: boolean;
+  requestInProgress: boolean;
 }
 
 export interface HomePartialState {
-  readonly [homeFeatureKey]: TodoState;
+  readonly [homeFeatureKey]: HomeState;
 }
 
 export const HomeInitialState: HomeState = {
   sidenav: true,
+  requestInProgress: false,
 };
 
 export const homeReducer = createReducer(
   HomeInitialState,
 
-  on(homeActions.toggleSidenav, (state) => {
+  on(actionsFromHome.toggleSidenav, (state) => {
     return { ...state, sidenav: !state.sidenav };
+  }),
+
+  on(actionsFromHome.requestInProgress, (state, action) => {
+    return { ...state, requestInProgress: action.requestInProgress };
   })
 );

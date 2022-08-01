@@ -1,0 +1,30 @@
+<div class="container">
+  <button
+    (click)="onOpenTodo()"
+    [disabled]="disabled"
+    [matTooltip]="multiSelect ? 'Preview Todos' : 'Preview Todo'"
+    mat-icon-button
+    type="button"
+  >
+    <mat-icon>open_in_new</mat-icon>
+  </button>
+  <button
+    (click)="onEditTodo()"
+    *ngIf="!multiSelect"
+    [disabled]="disabled"
+    [matTooltip]="'Edit Todo'"
+    mat-icon-button
+    type="button"
+  >
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button
+    (click)="onDeleteTodo()"
+    [disabled]="disabled"
+    [matTooltip]="multiSelect ? 'Delete Todos' : 'Delete Todo'"
+    mat-icon-button
+    type="button"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

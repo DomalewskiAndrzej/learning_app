@@ -1,7 +1,13 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
 export const toggleSidenav = createAction('[Home] Toggle Sidenav');
 
-export const homeActions = {
+export const requestInProgress = createAction(
+  '[Home] Request In Progress',
+  props<{ requestInProgress: boolean }>()
+);
+
+export const actionsFromHome = {
   toggleSidenav,
+  requestInProgress,
 };

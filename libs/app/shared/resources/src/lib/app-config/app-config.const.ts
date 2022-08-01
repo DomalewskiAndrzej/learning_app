@@ -15,4 +15,11 @@ export const appConfig = {
     lowest: 'LOWEST',
   },
   snackbarDuration: 4000,
+  paginatorOptions: {
+    pageSize: 5,
+    pageIndex: 0,
+    pageSizeOptions: [5, 10, 20],
+    showFirstLastButtons: true,
+    length: 5,
+  },
 };

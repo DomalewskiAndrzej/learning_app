@@ -7,22 +7,26 @@ export const todoFeatureKey = 'todo';
 
 export interface TodoState extends EntityState<Todo> {
   selectedTodos: Todo[];
+  todosExists: boolean;
 }
 
 export interface TodoPartialState {
   readonly [todoFeatureKey]: TodoState;
 }
 
-export const adapter: EntityAdapter<Todo> = createEntityAdapter<Todo>({});
+export const adapter: EntityAdapter<Todo> = createEntityAdapter<Todo>({
+  selectId: (todo: Todo) => todo.uuid,
+});
 
 export const initialState: TodoState = adapter.getInitialState({
   selectedTodos: [],
+  todosExists: false,
 });
 
 export const TodoReducer = createReducer(
   initialState,
   on(actionsFromTodo.loadTodosSuccess, (state, action) => {
-    return adapter.upsertMany(action.payload, state);
+    return adapter.upsertMany(action.payload, { ...state, todosExists: true });
   }),
 
   on(actionsFromTodo.addTodoSuccess, (state, action) => {
@@ -38,7 +42,15 @@ export const TodoReducer = createReducer(
   }),
 
   on(actionsFromTodo.editTodoSuccess, (state, action) => {
-    return adapter.upsertOne(action.payload, state);
+    const selectedTodos = state.selectedTodos
+      ? state.selectedTodos.map((todo) =>
+          todo.uuid === action.payload.uuid ? action.payload : todo
+        )
+      : [];
+    return adapter.updateOne(
+      { id: action.payload.uuid, changes: { ...action.payload } },
+      { ...state, selectedTodos }
+    );
   }),
 
   on(actionsFromTodo.selectTodos, (state, action) => {

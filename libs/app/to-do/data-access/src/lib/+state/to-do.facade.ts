@@ -9,6 +9,9 @@ import { actionsFromTodo } from './to-do.actions';
 @Injectable()
 export class TodoFacade {
   getTodos$: Observable<Todo[]> = this.store.pipe(select(toDoQuery.getTodos));
+  getTodosExists$: Observable<boolean> = this.store.pipe(
+    select(toDoQuery.getTodosExists)
+  );
   getSelectedTodos$: Observable<Todo[]> = this.store.pipe(
     select(toDoQuery.getSelectedTodos)
   );
@@ -17,6 +20,10 @@ export class TodoFacade {
   );
 
   constructor(private store: Store<TodoPartialState>) {}
+
+  startTodo(todo: Todo): void {
+    this.store.dispatch(actionsFromTodo.startTodo(todo));
+  }
 
   loadTodos(payload: TodoLoad): void {
     this.store.dispatch(actionsFromTodo.loadTodos({ payload }));

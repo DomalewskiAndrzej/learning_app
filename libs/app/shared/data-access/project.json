@@ -1,13 +1,23 @@
 {
   "projectType": "library",
+<<<<<<<< HEAD:libs/app/to-do/ui-to-do-table/project.json
+  "sourceRoot": "libs/app/to-do/ui-to-do-table/src",
+========
   "sourceRoot": "libs/app/shared/data-access/src",
+>>>>>>>> 618833c (feat(learing): todo module complete and start notifications module):libs/app/shared/data-access/project.json
   "prefix": "app",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
+<<<<<<<< HEAD:libs/app/to-do/ui-to-do-table/project.json
+      "outputs": ["coverage/libs/app/to-do/ui-to-do-table"],
+      "options": {
+        "jestConfig": "libs/app/to-do/ui-to-do-table/jest.config.ts",
+========
       "outputs": ["coverage/libs/app/shared/data-access"],
       "options": {
         "jestConfig": "libs/app/shared/data-access/jest.config.ts",
+>>>>>>>> 618833c (feat(learing): todo module complete and start notifications module):libs/app/shared/data-access/project.json
         "passWithNoTests": true
       }
     },
@@ -15,8 +25,13 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
+<<<<<<<< HEAD:libs/app/to-do/ui-to-do-table/project.json
+          "libs/app/to-do/ui-to-do-table/**/*.ts",
+          "libs/app/to-do/ui-to-do-table/**/*.html"
+========
           "libs/app/shared/data-access/**/*.ts",
           "libs/app/shared/data-access/**/*.html"
+>>>>>>>> 618833c (feat(learing): todo module complete and start notifications module):libs/app/shared/data-access/project.json
         ]
       }
     }

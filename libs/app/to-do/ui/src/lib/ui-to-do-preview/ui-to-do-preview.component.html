@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Todo Preview</h1>
+  <mat-card *ngFor="let todo of todos" class="container__card">
+    <mat-card-title
+    >Name: <strong>{{ todo.name }}</strong></mat-card-title
+    >
+    <mat-card-subtitle
+    >Priority: <strong>{{ todo.priority }}</strong
+    >, Time to complete:
+      <strong>{{ todo.timeToComplete | transformTime }}</strong></mat-card-subtitle
+    >
+    <mat-card-content>Description: {{ todo.description }}</mat-card-content>
+    <mat-card-actions class="container__card--actions">
+      <button (click)="onEditTodo(todo)" class="container__card--actions-btn" mat-raised-button type="button">
+        Edit Todo
+      </button>
+      <button (click)="onStartTodo(todo)" class="container__card--actions-btn" mat-raised-button type="button">
+        Start Todo
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

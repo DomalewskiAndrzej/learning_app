@@ -16,6 +16,15 @@ export const loadTodosFailure = createAction(
   props<{ error: any }>()
 );
 
+export const startTodo = createAction('[Todo] Start Todo', props<Todo>());
+
+export const startTodoSuccess = createAction('[Todo] Start Todo Success');
+
+export const startTodoFailure = createAction(
+  '[Todo] Start Todo Failure',
+  props<{ error: any }>()
+);
+
 export const addTodo = createAction(
   '[Todo] Add Todo',
   props<{ payload: Todo }>()
@@ -98,4 +107,7 @@ export const actionsFromTodo = {
   editTodoSuccess,
   editTodoFailure,
   selectTodos,
+  startTodo,
+  startTodoSuccess,
+  startTodoFailure,
 };

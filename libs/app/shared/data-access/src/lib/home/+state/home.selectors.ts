@@ -7,8 +7,13 @@ const getHomeState = createSelector(
 );
 
 const getSidenavState = createSelector(getHomeState, (state) => state.sidenav);
+const getRequestInProgress = createSelector(
+  getHomeState,
+  (state) => state.requestInProgress
+);
 
 export const homeQuery = {
   getHomeState,
   getSidenavState,
+  getRequestInProgress,
 };

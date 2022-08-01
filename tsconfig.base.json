@@ -10,17 +10,16 @@
     "strictPropertyInitialization": false,
     "strictNullChecks": false,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2021",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": ["es2021", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@app/app-shared-ui": ["libs/app/shared/ui/src/index.ts"],
+      "@app/app-to-do-ui": ["libs/app/to-do/ui/src/index.ts"],
       "@app/app/shared/feature": ["libs/app/shared/feature/src/index.ts"],
-      "@app/app/shared/ui-confirmation-dialog": [
-        "libs/app/shared/ui-confirmation-dialog/src/index.ts"
-      ],
       "@app/app/shared/ui-sidenav": ["libs/app/shared/ui-sidenav/src/index.ts"],
       "@app/app/shared/ui-toolbar": ["libs/app/shared/ui-toolbar/src/index.ts"],
       "@app/app/starting-page/feature": [
@@ -32,11 +31,9 @@
       "@app/app/to-do/data-access": ["libs/app/to-do/data-access/src/index.ts"],
       "@app/app/to-do/domain": ["libs/app/to-do/domain/src/index.ts"],
       "@app/app/to-do/feature": ["libs/app/to-do/feature/src/index.ts"],
+      "@app/app/to-do/shared": ["libs/app/to-do/shared/src/index.ts"],
       "@app/app/to-do/shell": ["libs/app/to-do/shell/src/index.ts"],
       "@app/app/to-do/to-do-shell": ["libs/app/to-do/to-do-shell/src/index.ts"],
-      "@app/app/to-do/ui-action-buttons": [
-        "libs/app/to-do/ui-action-buttons/src/index.ts"
-      ],
       "@app/app/to-do/ui-to-do-add-dialog": [
         "libs/app/to-do/ui-to-do-add-dialog/src/index.ts"
       ],

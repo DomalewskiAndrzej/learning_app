@@ -4,7 +4,12 @@
   [routingUrl]="routingUrl$ | async"
   [sidenav]="sidenav$ | async"
 >
-  <app-ui-toolbar (navigateBack)="navigateToTodo()" [sidenav]="(sidenav$ | async)">
+  <app-ui-toolbar
+    (navigateBack)="navigateBack()"
+    [notificationsQuantity]="notificationsQuantity$ | async"
+    [sidenav]="sidenav$ | async"
+    [todosInProgressQuantity]="todosInProgressQuantity$ | async"
+  >
     <router-outlet></router-outlet>
   </app-ui-toolbar>
 </app-ui-sidenav>

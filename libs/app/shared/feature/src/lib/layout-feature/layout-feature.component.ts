@@ -1,7 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Link, LINKS } from '@app/shared/domain';
-import { RoutingFacade } from '@app/shared/data-access';
-import { HomeFacade } from '../../../../data-access/src/lib/home/+state/home.facade';
+import {
+  HomeFacade,
+  NotificationsFacade,
+  RoutingFacade,
+} from '@app/shared/data-access';
 
 @Component({
   selector: 'app-layout-feature',
@@ -9,18 +12,27 @@ import { HomeFacade } from '../../../../data-access/src/lib/home/+state/home.fac
   styleUrls: ['./layout-feature.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LayoutFeatureComponent {
+export class LayoutFeatureComponent implements OnInit {
   links = LINKS;
   routingUrl$ = this.routingFacade.getRoutingUrl$;
   sidenav$ = this.homeFacade.sidenav$;
+  todosInProgressQuantity$ =
+    this.notificationsFacade.getTodosInProgressQuantity$;
+  notificationsQuantity$ = this.notificationsFacade.getNotificationsQuantity$;
 
   constructor(
     private routingFacade: RoutingFacade,
-    private homeFacade: HomeFacade
+    private homeFacade: HomeFacade,
+    private notificationsFacade: NotificationsFacade
   ) {}
 
-  navigateToTodo() {
-    this.navigateTo(this.links.todo);
+  ngOnInit(): void {
+    this.notificationsFacade.loadNotificationsQuantity();
+    this.notificationsFacade.loadTodosInProgressQuantity();
+  }
+
+  navigateBack() {
+    this.routingFacade.goBack();
   }
 
   navigateTo(link: Link): void {
