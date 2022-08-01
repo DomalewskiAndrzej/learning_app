@@ -1,12 +1,7 @@
 /* eslint-disable */
 export default {
-<<<<<<<< HEAD:libs/app/to-do/ui-to-do-table-buttons/jest.config.ts
-  displayName: 'app-feature-to-do-table-ui-to-do-table-buttons',
   preset: '../../../../jest.preset.js',
-========
   displayName: 'shared-resources',
-  preset: '../../../jest.preset.js',
->>>>>>>> 618833c (feat(learing): todo module complete and start notifications module):libs/app/shared/resources/jest.config.ts
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -14,12 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-<<<<<<<< HEAD:libs/app/to-do/ui-to-do-table-buttons/jest.config.ts
-  coverageDirectory:
-    '../../../../coverage/libs/app/feature-to-do-table/ui-to-do-table-buttons',
-========
   coverageDirectory: '../../../coverage/libs/app/shared/resources',
->>>>>>>> 618833c (feat(learing): todo module complete and start notifications module):libs/app/shared/resources/jest.config.ts
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

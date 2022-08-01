@@ -1,9 +1,5 @@
 {
-<<<<<<<< HEAD:libs/app/to-do/ui-to-do-table-buttons/.eslintrc.json
   "extends": ["../../../../.eslintrc.json"],
-========
-  "extends": ["..\\..\\..\\..\\.eslintrc.json"],
->>>>>>>> 618833c (feat(learing): todo module complete and start notifications module):libs/app/to-do/ui/.eslintrc.json
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {

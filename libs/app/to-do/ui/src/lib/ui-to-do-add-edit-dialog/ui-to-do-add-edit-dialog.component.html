@@ -20,13 +20,8 @@
         matInput
         type="time"
       />
-<<<<<<<< HEAD:libs/app/to-do/ui-to-do-add-dialog/src/lib/ui-to-do-add-edit-dialog/ui-to-do-add-edit-dialog.component.html
-      <mat-error *ngIf="error && form.controls['timeToComplete'].invalid"
-        >This field is required
-========
       <mat-error *ngIf="error && form.controls['timeToComplete'].errors"
         >Time to complete cannot equal 0
->>>>>>>> 618833c (feat(learing): todo module complete and start notifications module):libs/app/to-do/ui/src/lib/ui-to-do-add-edit-dialog/ui-to-do-add-edit-dialog.component.html
       </mat-error>
     </mat-form-field>
     <mat-form-field class="form__priority">
@@ -63,15 +58,11 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button (click)="closeDialog()" mat-raised-button>Close</button>
-<<<<<<<< HEAD:libs/app/to-do/ui-to-do-add-dialog/src/lib/ui-to-do-add-edit-dialog/ui-to-do-add-edit-dialog.component.html
-  <button (click)="onSubmit()" mat-raised-button>
-========
   <button
     (click)="onSubmit()"
     [disabled]="this.form.pristine"
     mat-raised-button
   >
->>>>>>>> 618833c (feat(learing): todo module complete and start notifications module):libs/app/to-do/ui/src/lib/ui-to-do-add-edit-dialog/ui-to-do-add-edit-dialog.component.html
     {{ editMode ? 'Edit' : 'Create' }} Todo
   </button>
 </mat-dialog-actions>

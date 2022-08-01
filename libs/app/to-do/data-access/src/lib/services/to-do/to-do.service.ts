@@ -61,8 +61,10 @@ export class ToDoService {
   }
 
   startTodo(todo: Todo): Observable<boolean> {
-    const startedTodos = JSON.parse(localStorage.getItem('startedTodos'));
-    const newStartedTodo = {
+    const startedTodos: Todo[] = JSON.parse(
+      localStorage.getItem('startedTodos')
+    );
+    const newStartedTodo: Todo = {
       ...todo,
       inProgress: true,
       dateOfStart: this.timeParser.getCurrentParsedTime(),
@@ -70,7 +72,9 @@ export class ToDoService {
     localStorage.setItem(
       'startedTodos',
       JSON.stringify(
-        startedTodos ? [startedTodos, newStartedTodo] : [newStartedTodo]
+        startedTodos
+          ? [...startedTodos, newStartedTodo]
+          : [{ ...newStartedTodo }]
       )
     );
     return of(true);

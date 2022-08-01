@@ -9,11 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-<<<<<<<< HEAD:libs/app/shared/data-access/jest.config.ts
-  coverageDirectory: '../../../coverage/libs/app/shared/data-access',
-========
   coverageDirectory: '../../../../coverage/libs/app/to-do/shared',
->>>>>>>> 618833c (feat(learing): todo module complete and start notifications module):libs/app/to-do/shared/jest.config.ts
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

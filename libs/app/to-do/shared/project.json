@@ -1,23 +1,15 @@
 {
   "projectType": "library",
-<<<<<<<< HEAD:libs/app/shared/domain/project.json
-  "sourceRoot": "libs/app/shared/domain/src",
-========
   "sourceRoot": "libs/app/to-do/shared/src",
->>>>>>>> 618833c (feat(learing): todo module complete and start notifications module):libs/app/to-do/shared/project.json
   "prefix": "app",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-<<<<<<<< HEAD:libs/app/shared/domain/project.json
-      "outputs": ["coverage/libs/app/shared/domain"],
-      "options": {
-        "jestConfig": "libs/app/shared/domain/jest.config.ts",
-========
-      "outputs": ["coverage/libs/app/to-do/shared"],
+      "outputs": [
+        "coverage/libs/app/to-do/shared"
+      ],
       "options": {
         "jestConfig": "libs/app/to-do/shared/jest.config.ts",
->>>>>>>> 618833c (feat(learing): todo module complete and start notifications module):libs/app/to-do/shared/project.json
         "passWithNoTests": true
       }
     },
@@ -25,13 +17,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-<<<<<<<< HEAD:libs/app/shared/domain/project.json
-          "libs/app/shared/domain/**/*.ts",
-          "libs/app/shared/domain/**/*.html"
-========
           "libs/app/to-do/shared/**/*.ts",
           "libs/app/to-do/shared/**/*.html"
->>>>>>>> 618833c (feat(learing): todo module complete and start notifications module):libs/app/to-do/shared/project.json
         ]
       }
     }
