@@ -5,14 +5,10 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/app/shared/feature"
-      ],
+      "outputs": ["coverage/libs/app/shared/feature"],
       "options": {
         "jestConfig": "libs/app/shared/feature/jest.config.ts",
-        "outputs": [
-          "coverage/libs/app/shared/domain"
-        ],
+        "outputs": ["coverage/libs/app/shared/domain"],
         "options": {
           "jestConfig": "libs/app/shared/domain/jest.config.ts",
           "passWithNoTests": true

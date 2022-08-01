@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/app/to-do/shared/services/src",
+  "prefix": "app",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app/to-do/shared/services"],
+      "options": {
+        "jestConfig": "libs/app/to-do/shared/services/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/app/to-do/shared/services/**/*.ts",
+          "libs/app/to-do/shared/services/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/app/to-do/to-do-preview/feature/src",
+  "prefix": "app",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app/to-do/to-do-preview/feature"],
+      "options": {
+        "jestConfig": "libs/app/to-do/to-do-preview/feature/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/app/to-do/to-do-preview/feature/**/*.ts",
+          "libs/app/to-do/to-do-preview/feature/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

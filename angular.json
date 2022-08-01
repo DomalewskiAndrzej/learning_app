@@ -13,9 +13,12 @@
     "app-starting-page-ui-starting-page": "libs/app/starting-page/ui-starting-page",
     "app-to-do-data-access": "libs/app/to-do/data-access",
     "app-to-do-domain": "libs/app/to-do/domain",
-    "app-to-do-feature": "libs/app/to-do/feature",
-    "app-to-do-shared": "libs/app/to-do/shared",
+    "app-to-do-shared-services": "libs/app/to-do/shared/services",
+    "app-to-do-shared-ui": "libs/app/to-do/shared/ui",
+    "app-to-do-to-do-preview-feature": "libs/app/to-do/to-do-preview/feature",
+    "app-to-do-to-do-preview-ui-to-do-preview": "libs/app/to-do/to-do-preview/ui-to-do-preview",
     "app-to-do-to-do-shell": "libs/app/to-do/to-do-shell",
-    "app-to-do-ui": "libs/app/to-do/ui"
+    "app-to-do-to-do-table-feature": "libs/app/to-do/to-do-table/feature",
+    "app-to-do-to-do-table-ui-to-do-table": "libs/app/to-do/to-do-table/ui-to-do-table"
   }
 }

@@ -1,0 +1,13 @@
+<app-to-do-table
+  (deleteTodo)="deleteTodo($event)"
+  (deleteTodos)="deleteTodos($event)"
+  (editTodo)="editTodo($event)"
+  (loadTodos)="loadTodos($event)"
+  (openTodos)="openTodos($event)"
+  [lastOpenedTodosUUID]="lastOpenedTodosUUID$ | async"
+  [requestInProgress]="requestInProgress$ | async"
+  [todos]="todos$ | async"
+>
+  <app-action-buttons (addTodo)="addTodo()" action-buttons>
+  </app-action-buttons>
+</app-to-do-table>

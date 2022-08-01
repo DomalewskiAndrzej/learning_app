@@ -5,14 +5,10 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/app/to-do/ui-to-do-table"
-      ],
+      "outputs": ["coverage/libs/app/to-do/ui-to-do-table"],
       "options": {
         "jestConfig": "libs/app/to-do/ui-to-do-table/jest.config.ts",
-        "outputs": [
-          "coverage/libs/app/shared/data-access"
-        ],
+        "outputs": ["coverage/libs/app/shared/data-access"],
         "options": {
           "jestConfig": "libs/app/shared/data-access/jest.config.ts",
           "passWithNoTests": true

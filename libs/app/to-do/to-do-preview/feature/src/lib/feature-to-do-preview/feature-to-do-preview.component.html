@@ -1,0 +1,5 @@
+<app-to-do-preview
+  (editTodo)="onEditTodo($event)"
+  (startTodo)="onStartTodo($event)"
+  [todos]="todos$ | async"
+></app-to-do-preview>

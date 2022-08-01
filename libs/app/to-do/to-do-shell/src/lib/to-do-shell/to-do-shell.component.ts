@@ -1,7 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { TodoFacade } from '@app/app/to-do/data-access';
-import { appConfig } from '@app/shared/resources';
-import { filter, take } from 'rxjs';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-feature-to-do-table-shell',
@@ -9,17 +6,4 @@ import { filter, take } from 'rxjs';
   styleUrls: ['./to-do-shell.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ToDoShellComponent implements OnInit {
-  constructor(private todoFacade: TodoFacade) {}
-
-  ngOnInit(): void {
-    this.todoFacade.getTodosExists$
-      .pipe(
-        filter((todo) => !todo),
-        take(1)
-      )
-      .subscribe(() =>
-        this.todoFacade.loadTodos({ offset: appConfig.firstItemLoad })
-      );
-  }
-}
+export class ToDoShellComponent {}
