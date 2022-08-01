@@ -1,0 +1,40 @@
+{
+  "projectType": "library",
+<<<<<<<< HEAD:libs/app/shared/feature/project.json
+  "sourceRoot": "libs/app/shared/feature/src",
+========
+  "sourceRoot": "libs/app/shared/domain/src",
+>>>>>>>> 618833c (feat(learing): todo module complete and start notifications module):libs/app/shared/domain/project.json
+  "prefix": "app",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+<<<<<<<< HEAD:libs/app/shared/feature/project.json
+      "outputs": ["coverage/libs/app/shared/feature"],
+      "options": {
+        "jestConfig": "libs/app/shared/feature/jest.config.ts",
+========
+      "outputs": ["coverage/libs/app/shared/domain"],
+      "options": {
+        "jestConfig": "libs/app/shared/domain/jest.config.ts",
+>>>>>>>> 618833c (feat(learing): todo module complete and start notifications module):libs/app/shared/domain/project.json
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+<<<<<<<< HEAD:libs/app/shared/feature/project.json
+          "libs/app/shared/feature/**/*.ts",
+          "libs/app/shared/feature/**/*.html"
+========
+          "libs/app/shared/domain/**/*.ts",
+          "libs/app/shared/domain/**/*.html"
+>>>>>>>> 618833c (feat(learing): todo module complete and start notifications module):libs/app/shared/domain/project.json
+        ]
+      }
+    }
+  },
+  "tags": []
+}

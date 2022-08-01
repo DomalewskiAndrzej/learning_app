@@ -1,0 +1,71 @@
+<mat-toolbar class="toolbar">
+  <div>
+    <button
+      (click)="onNavigateBack()"
+      *ngIf="!sidenav"
+      [matTooltip]="'Navigate back'"
+      class="toolbar__button"
+      mat-icon-button
+      type="button"
+    >
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+  </div>
+  <div>
+    <button
+      (click)="onOpenTodosInProgress()"
+      [matMenuTriggerFor]="todosInProgress"
+      [matTooltip]="'Todos in progress'"
+      class="toolbar__button"
+      mat-icon-button
+      type="button"
+    >
+      <mat-icon
+        [matBadgeHidden]="!todosInProgressQuantity"
+        [matBadge]="todosInProgressQuantity"
+        matBadgeColor="accent"
+        matBadgePosition="after"
+        matBadgeSize="small"
+        >event_busy
+      </mat-icon>
+    </button>
+    <button
+      (click)="onOpenNotifications()"
+      [matMenuTriggerFor]="notifications"
+      [matTooltip]="'Notifications'"
+      class="toolbar__button"
+      mat-icon-button
+      type="button"
+    >
+      <mat-icon
+        [matBadgeHidden]="!notifications"
+        [matBadge]="notificationsQuantity"
+        matBadgeColor="warn"
+        matBadgePosition="after"
+        matBadgeSize="small"
+        >notifications
+      </mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+<div class="content">
+  <ng-content></ng-content>
+</div>
+<mat-menu
+  #todosInProgress="matMenu"
+  class="menu-notifications"
+  xPosition="before"
+>
+  <ng-template matMenuContent>
+    <app-ui-notification></app-ui-notification>
+  </ng-template>
+</mat-menu>
+<mat-menu
+  #notifications="matMenu"
+  class="menu-notifications"
+  xPosition="before"
+>
+  <ng-template matMenuContent>
+    <app-ui-notification></app-ui-notification>
+  </ng-template>
+</mat-menu>

@@ -1,5 +1,4 @@
 // INTERFACES
 export * from './lib/interfaces/to-do.interface';
-
-// CONSTS
-export * from './lib/consts/priorities.const';
+export * from './lib/interfaces/to-do-add-edit-dialog-data';
+export * from './lib/interfaces/to-do-load.interface';

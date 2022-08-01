@@ -1,11 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {ToDoComponent} from "./feature-to-do/to-do/to-do.component";
+import { FeatureToDoTableComponent } from './feature/feature-to-do-table/feature-to-do-table.component';
+import { FeatureToDoPreviewComponent } from './feature/feature-to-do-preview/feature-to-do-preview.component';
+import { ToDoPreviewGuard } from './guards/to-do-preview.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: ToDoComponent,
+    component: FeatureToDoTableComponent,
+  },
+  {
+    path: 'preview',
+    component: FeatureToDoPreviewComponent,
+    canActivate: [ToDoPreviewGuard],
   },
 ];
 
