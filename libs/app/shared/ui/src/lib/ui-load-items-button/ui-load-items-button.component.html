@@ -1,0 +1,14 @@
+<div class="container">
+  <button
+    (click)="onLoadItems()"
+    *ngIf="canLoadMoreItems && !requestInProgress"
+    mat-raised-button
+    type="button"
+  >
+    Load more items
+  </button>
+  <mat-spinner
+    *ngIf="requestInProgress && canLoadMoreItems"
+    [diameter]="diameter"
+  ></mat-spinner>
+</div>

@@ -38,8 +38,8 @@
             [class.container__table--selected-to-do]="
               todosSelection.isSelected(todo)
             "
-            [matTooltip]="todo.description"
-            >{{ todo.name }}</span
+            [matTooltip]="todo.information.description"
+            >{{ todo.information.name }}</span
           >
         </mat-cell>
       </ng-container>
@@ -77,9 +77,15 @@
       ></mat-row>
     </table>
   </div>
-  <mat-spinner *ngIf="requestInProgress"></mat-spinner>
   <div class="container__paginator">
-    <div class="container__paginator--btn"></div>
+    <div class="container__paginator--btn">
+      <app-ui-load-items-button
+        (loadItems)="onLoadTodos()"
+        [canLoadMoreItems]="canLoadMoreItems"
+        [diameter]="30"
+        [requestInProgress]="requestInProgress$ | async"
+      ></app-ui-load-items-button>
+    </div>
     <mat-paginator
       (page)="onLoadTodos(paginator.pageSize)"
       [length]="paginatorOptions.length"

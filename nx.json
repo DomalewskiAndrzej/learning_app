@@ -1,12 +1,10 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "npmScope": "app",
-  "defaultProject": "app",
   "affected": {
     "defaultBase": "master"
   },
   "cli": {
-    "defaultCollection": "@schematics/angular",
     "packageManager": "npm"
   },
   "implicitDependencies": {
@@ -20,21 +18,14 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "MzcxNGE3MzItMGNhNy00YWJiLThjOWUtY2IzZjkyMWE5OTBjfHJlYWQtd3JpdGU="
       }
     }
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ]
+      "dependsOn": ["^build"]
     }
   },
   "generators": {
@@ -53,5 +44,6 @@
       "style": "scss",
       "changeDetection": "OnPush"
     }
-  }
+  },
+  "defaultProject": "app"
 }

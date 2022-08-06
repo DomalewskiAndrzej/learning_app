@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions } from '@ngrx/effects';
 import { ActionsSubject, Store } from '@ngrx/store';
-import { filter } from 'rxjs';
-import { actionsFromHome } from './home.actions';
 import { HomePartialState } from './home.reducer';
+import { actionsFromHome } from './home.actions';
+import { filter } from 'rxjs';
 
 @Injectable()
 export class HomeEffects {
@@ -12,17 +12,32 @@ export class HomeEffects {
     private actionSubject$: ActionsSubject,
     private store: Store<HomePartialState>
   ) {
+    let request = 0;
     actionSubject$
-      .pipe(filter((action) => action.type.includes('Load')))
+      .pipe(
+        filter(
+          (action) =>
+            action.type !== actionsFromHome.requestInProgress.type &&
+            !action.type.includes('@ngrx/router-store') &&
+            !action.type.includes('[Home]') &&
+            !action.type.includes('Select')
+        )
+      )
       .subscribe((action) => {
         if (!action.type.includes('Success')) {
-          this.store.dispatch(
-            actionsFromHome.requestInProgress({ requestInProgress: true })
-          );
+          request++;
+          if (request === 1) {
+            this.store.dispatch(
+              actionsFromHome.requestInProgress({ requestInProgress: true })
+            );
+          }
         } else {
-          this.store.dispatch(
-            actionsFromHome.requestInProgress({ requestInProgress: false })
-          );
+          request--;
+          if (request === 0) {
+            this.store.dispatch(
+              actionsFromHome.requestInProgress({ requestInProgress: false })
+            );
+          }
         }
       });
   }

@@ -15,6 +15,9 @@ import { UiNotificationComponent } from './ui-notification/ui-notification.compo
 import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { UiLoadItemsButtonComponent } from './ui-load-items-button/ui-load-items-button.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { SharedDomainModule } from '@app/shared/domain';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     UiSidenavComponent,
     UiToolbarComponent,
     UiNotificationComponent,
+    UiLoadItemsButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -36,12 +40,15 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatMenuModule,
     MatExpansionModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
+    SharedDomainModule,
   ],
   exports: [
     UiConfirmationDialogComponent,
     UiSidenavComponent,
     UiToolbarComponent,
     UiNotificationComponent,
+    UiLoadItemsButtonComponent,
   ],
 })
 export class SharedUiModule {}

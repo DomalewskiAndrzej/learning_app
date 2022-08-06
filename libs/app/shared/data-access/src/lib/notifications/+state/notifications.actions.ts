@@ -1,38 +1,28 @@
-import { createAction, props } from '@ngrx/store';
+import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import { ItemInformation, LoadItems } from '@app/shared/domain';
 
-export const loadNotificationsQuantity = createAction(
-  '[Notifications] Load Notifications Quantity'
-);
-
-export const loadNotificationsQuantitySuccess = createAction(
-  '[Notifications] Load Notifications Quantity Success',
-  props<{ quantity: number }>()
-);
-
-export const loadNotificationsQuantityFailure = createAction(
-  '[Notifications] Load Notifications Quantity Failure',
-  props<{ error: any }>()
-);
-
-export const loadTodosInProgressQuantity = createAction(
-  '[Notifications] Load Todos In Progress Quantity'
-);
-
-export const loadTodosInProgressQuantitySuccess = createAction(
-  '[Notifications] Load Todos In Progress Quantity Success',
-  props<{ quantity: number }>()
-);
-
-export const loadTodosInProgressQuantityFailure = createAction(
-  '[Notifications] Load Todos In Progress Quantity Failure',
-  props<{ error: any }>()
-);
-
-export const actionsFromNotifications = {
-  loadNotificationsQuantity,
-  loadNotificationsQuantitySuccess,
-  loadNotificationsQuantityFailure,
-  loadTodosInProgressQuantity,
-  loadTodosInProgressQuantitySuccess,
-  loadTodosInProgressQuantityFailure,
-};
+export const actionsFromNotifications = createActionGroup({
+  source: 'Notifications',
+  events: {
+    'Load Todos In Progress Notifications Quantity': emptyProps(),
+    'Load Todos In Progress Notifications Quantity Success': props<{
+      quantity: number;
+    }>(),
+    'Load Todos In Progress Notifications Quantity Failure': (
+      error: Error
+    ) => ({ error }),
+    'Load Todos In Progress Notifications': props<{ loadItems: LoadItems }>(),
+    'Load Todos In Progress Notifications Success': props<{
+      notifications: ItemInformation[];
+    }>(),
+    'Load Todos In Progress Notifications Failure': (error: Error) => ({
+      error,
+    }),
+    'Load Notifications Quantity': emptyProps(),
+    'Load Notifications Quantity Success': props<{ quantity: number }>(),
+    'Load Notifications Quantity Failure': (error: Error) => ({ error }),
+    'Load Notifications': props<{ loadItems: LoadItems }>(),
+    'Load Notifications Success': props<{ notifications: ItemInformation[] }>(),
+    'Load Notifications Failure': (error: Error) => ({ error }),
+  },
+});

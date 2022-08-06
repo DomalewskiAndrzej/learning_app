@@ -6,16 +6,35 @@ const getNotificationsState = createSelector(
   (state: sharedStoreState) => state.notifications
 );
 
+const getTodosInProgressNotificationsQuantity = createSelector(
+  getNotificationsState,
+  (state) => state.todosInProgressNotificationsQuantity
+);
+
+const getTodosInProgressNotifications = createSelector(
+  getNotificationsState,
+  (state) => state.todosInProgressNotifications
+);
+
 const getNotificationsQuantity = createSelector(
   getNotificationsState,
   (state) => state.notificationsQuantity
 );
-const getTodosInProgressQuantity = createSelector(
+
+const getNotifications = createSelector(
   getNotificationsState,
-  (state) => state.todosInProgressQuantity
+  (state) => state.notifications
+);
+
+const notificationsRequestInProgress = createSelector(
+  getNotificationsState,
+  (state) => state.notificationsRequestInProgress
 );
 
 export const notificationsQuery = {
   getNotificationsQuantity,
-  getTodosInProgressQuantity,
+  getTodosInProgressNotificationsQuantity,
+  getNotifications,
+  getTodosInProgressNotifications,
+  notificationsRequestInProgress,
 };

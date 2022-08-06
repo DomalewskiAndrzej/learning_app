@@ -8,6 +8,8 @@ export const todoFeatureKey = 'todo';
 export interface TodoState extends EntityState<Todo> {
   selectedTodos: Todo[];
   todosExists: boolean;
+  requestInProgress: boolean;
+  todosQuantity: number;
 }
 
 export interface TodoPartialState {
@@ -21,12 +23,30 @@ export const adapter: EntityAdapter<Todo> = createEntityAdapter<Todo>({
 export const initialState: TodoState = adapter.getInitialState({
   selectedTodos: [],
   todosExists: false,
+  requestInProgress: false,
+  todosQuantity: 0,
 });
 
 export const TodoReducer = createReducer(
   initialState,
+  on(actionsFromTodo.loadTodos, actionsFromTodo.loadTodosQuantity, (state) => {
+    return { ...state, requestInProgress: true };
+  }),
+
   on(actionsFromTodo.loadTodosSuccess, (state, action) => {
-    return adapter.upsertMany(action.payload, { ...state, todosExists: true });
+    return adapter.upsertMany(action.payload, {
+      ...state,
+      todosExists: true,
+      requestInProgress: false,
+    });
+  }),
+
+  on(actionsFromTodo.loadTodosQuantitySuccess, (state, action) => {
+    return {
+      ...state,
+      requestInProgress: false,
+      todosQuantity: action.payload,
+    };
   }),
 
   on(actionsFromTodo.addTodoSuccess, (state, action) => {

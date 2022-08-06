@@ -19,9 +19,21 @@ const getTodosExists = createSelector(
   (state) => state.todosExists
 );
 
+const requestInProgress = createSelector(
+  getTodoState,
+  (state) => state.requestInProgress
+);
+
+const canLoadMoreItems = createSelector(
+  getTodoState,
+  (state) => state.ids.length < state.todosQuantity
+);
+
 export const toDoQuery = {
   getTodos,
   getSelectedTodos,
   getSelectedTodosUUID,
   getTodosExists,
+  requestInProgress,
+  canLoadMoreItems,
 };

@@ -6,7 +6,7 @@ export * from './lib/utils/enums/links-names.enum';
 
 // INTERFACES
 export * from './lib/utils/interfaces/link.interface';
-export * from './lib/utils/interfaces/notification.interface';
+export * from './lib/utils/interfaces/item-information.interface';
 export * from './lib/utils/interfaces/paginator-options.interface';
 export * from './lib/utils/interfaces/load-items.interface';
 

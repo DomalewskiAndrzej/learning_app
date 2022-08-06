@@ -5,7 +5,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { TodoFacade } from '@app/app/to-do/data-access';
-import { filter, Observable, of, take } from 'rxjs';
+import { map, Observable, take, tap } from 'rxjs';
 import { appConfig } from '@app/shared/resources';
 
 @Injectable()
@@ -16,14 +16,13 @@ export class TodoTableGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    this.todoFacade.getTodosExists$
-      .pipe(
-        filter((todo) => !todo),
-        take(1)
-      )
-      .subscribe(() =>
-        this.todoFacade.loadTodos({ offset: appConfig.itemsPerLoad })
-      );
-    return of(true);
+    return this.todoFacade.getTodosExists$.pipe(
+      take(1),
+      tap(() => {
+        this.todoFacade.loadTodos({ offset: appConfig.itemsPerLoad });
+        this.todoFacade.loadTodosQuantity();
+      }),
+      map(() => true)
+    );
   }
 }

@@ -1,5 +1,5 @@
 import { Store } from '@ngrx/store';
-import { routingActions } from './routing.actions';
+import { actionfFromRouting } from './routing.actions';
 import { Injectable } from '@angular/core';
 import { Link } from '@app/shared/domain';
 import { RouterReducerState } from '@ngrx/router-store';
@@ -15,10 +15,10 @@ export class RoutingFacade {
   constructor(private store: Store<RouterReducerState>) {}
 
   navigate(link: Link): void {
-    this.store.dispatch(routingActions.navigate({ link }));
+    this.store.dispatch(actionfFromRouting.navigate({ link }));
   }
 
   goBack(): void {
-    this.store.dispatch(routingActions.goBack());
+    this.store.dispatch(actionfFromRouting.goBack());
   }
 }

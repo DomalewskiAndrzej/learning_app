@@ -6,11 +6,19 @@
 >
   <app-ui-toolbar
     (loadNotifications)="loadNotifications($event)"
-    (loadTodosInProgress)="loadTodosInProgress($event)"
+    (loadTodosInProgressNotifications)="
+      loadTodosInProgressNotifications($event)
+    "
     (navigateBack)="navigateBack()"
     [notificationsQuantity]="notificationsQuantity$ | async"
+    [notificationsRequestInProgress]="notificationsRequestInProgress$"
+    [notifications]="notifications$ | async"
+    [requestInProgress]="requestInProgress$ | async"
     [sidenav]="sidenav$ | async"
-    [todosInProgressQuantity]="todosInProgressQuantity$ | async"
+    [todosInProgressNotificationsQuantity]="
+      todosInProgressNotificationsQuantity$ | async
+    "
+    [todosInProgressNotifications]="todosInProgressNotifications$ | async"
   >
     <router-outlet></router-outlet>
   </app-ui-toolbar>

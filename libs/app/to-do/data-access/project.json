@@ -1,13 +1,12 @@
 {
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/app/to-do/data-access/src",
   "prefix": "app",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/app/to-do/data-access"
-      ],
+      "outputs": ["coverage/libs/app/to-do/data-access"],
       "options": {
         "jestConfig": "libs/app/to-do/data-access/jest.config.ts",
         "passWithNoTests": true

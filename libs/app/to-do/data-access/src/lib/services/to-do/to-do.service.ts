@@ -24,8 +24,10 @@ export class ToDoService {
     new Array(100).fill(0).forEach((val, index) => {
       todos.push({
         id: index + 1,
-        name: uniqueNamesGenerator({ dictionaries: [adjectives] }),
-        description: 'as',
+        information: {
+          name: uniqueNamesGenerator({ dictionaries: [adjectives] }),
+          description: 'as',
+        },
         priority: 'high',
         timeToComplete: '00:01',
         uuid: v4(),
@@ -60,6 +62,10 @@ export class ToDoService {
     // });
   }
 
+  loadTodosQuantity(): Observable<number> {
+    return of(this.todosMemory.length);
+  }
+
   startTodo(todo: Todo): Observable<boolean> {
     const startedTodos: Todo[] = JSON.parse(
       localStorage.getItem('startedTodos')
@@ -67,7 +73,10 @@ export class ToDoService {
     const newStartedTodo: Todo = {
       ...todo,
       inProgress: true,
-      dateOfStart: this.timeParser.getCurrentParsedTime(),
+      information: {
+        ...todo.information,
+        dateOfStart: this.timeParser.getCurrentParsedTime(),
+      },
     };
     localStorage.setItem(
       'startedTodos',

@@ -4,8 +4,9 @@
   (editTodo)="editTodo($event)"
   (loadTodos)="loadTodos($event)"
   (openTodos)="openTodos($event)"
+  [canLoadMoreItems]="canLoadMoreItems$ | async"
   [lastOpenedTodosUUID]="lastOpenedTodosUUID$ | async"
-  [requestInProgress]="requestInProgress$ | async"
+  [requestInProgress$]="requestInProgress$"
   [todos]="todos$ | async"
 >
   <app-action-buttons (addTodo)="addTodo()" action-buttons>

@@ -16,7 +16,8 @@ import { LoadItems } from '@app/shared/domain';
 export class FeatureToDoTableComponent {
   todos$ = this.todoFacade.getTodos$;
   lastOpenedTodosUUID$ = this.todoFacade.getSelectedTodosUUID$;
-  requestInProgress$ = this.homeFacade.requestInProgress$;
+  requestInProgress$ = this.todoFacade.requestInProgress$;
+  canLoadMoreItems$ = this.todoFacade.canLoadMoreItems$;
 
   constructor(
     private dialog: MatDialog,

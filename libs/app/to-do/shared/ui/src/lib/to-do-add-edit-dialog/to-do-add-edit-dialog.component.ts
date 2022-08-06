@@ -52,12 +52,13 @@ export class TodoAddEditDialogComponent implements OnInit {
 
   initForm(todo: Todo, editMode: boolean): void {
     this.form = new FormGroup({
-      name: new FormControl(editMode ? todo?.name : null, [
+      name: new FormControl(editMode ? todo?.information.name : null, [
         Validators.required,
       ]),
-      description: new FormControl(editMode ? todo?.description : null, [
-        Validators.required,
-      ]),
+      description: new FormControl(
+        editMode ? todo?.information.description : null,
+        [Validators.required]
+      ),
       timeToComplete: new FormControl(
         editMode ? todo?.timeToComplete : '00:00',
         [Validators.required, TimeToCompleteValidator()]

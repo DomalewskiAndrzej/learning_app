@@ -17,7 +17,25 @@ export class TodoEffects {
           map((payload: Todo[]) =>
             actionsFromTodo.loadTodosSuccess({ payload })
           ),
-          catchError((error) => of(actionsFromTodo.loadTodosFailure({ error })))
+          catchError((error: Error) =>
+            of(actionsFromTodo.loadTodosFailure({ error }))
+          )
+        )
+      )
+    )
+  );
+
+  loadTodosQuantity$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(actionsFromTodo.loadTodosQuantity),
+      switchMap(() =>
+        this.todoService.loadTodosQuantity().pipe(
+          map((payload: number) =>
+            actionsFromTodo.loadTodosQuantitySuccess({ payload })
+          ),
+          catchError((error: Error) =>
+            of(actionsFromTodo.loadTodosQuantityFailure({ error }))
+          )
         )
       )
     )
@@ -26,16 +44,19 @@ export class TodoEffects {
   startTodo$ = createEffect(() =>
     this.actions$.pipe(
       ofType(actionsFromTodo.startTodo),
-      switchMap((payload: Todo) =>
-        this.todoService.startTodo(payload).pipe(
+      pluck('payload'),
+      switchMap((todo: Todo) =>
+        this.todoService.startTodo(todo).pipe(
           map(() => {
             this.snackbarService.openSnackBar(
-              `Successfully started todo: ${payload.name}`,
+              `Successfully started todo: ${todo.information.name}`,
               'OK!'
             );
             return actionsFromTodo.startTodoSuccess();
           }),
-          catchError((error) => of(actionsFromTodo.startTodoFailure({ error })))
+          catchError((error: Error) =>
+            of(actionsFromTodo.startTodoFailure({ error }))
+          )
         )
       )
     )
@@ -49,12 +70,14 @@ export class TodoEffects {
         this.todoService.addTodo(payload).pipe(
           map((payload: Todo) => {
             this.snackbarService.openSnackBar(
-              `Successfully added todo: ${payload.name}`,
+              `Successfully added todo: ${payload.information.name}`,
               'OK!'
             );
             return actionsFromTodo.addTodoSuccess({ payload });
           }),
-          catchError((error) => of(actionsFromTodo.addTodoFailure({ error })))
+          catchError((error: Error) =>
+            of(actionsFromTodo.addTodoFailure({ error }))
+          )
         )
       )
     )
@@ -73,7 +96,7 @@ export class TodoEffects {
             );
             return actionsFromTodo.deleteTodoSuccess({ payload });
           }),
-          catchError((error) =>
+          catchError((error: Error) =>
             of(actionsFromTodo.deleteTodoFailure({ error }))
           )
         )
@@ -94,7 +117,7 @@ export class TodoEffects {
             );
             return actionsFromTodo.deleteTodosSuccess({ payload });
           }),
-          catchError((error) =>
+          catchError((error: Error) =>
             of(actionsFromTodo.deleteTodosFailure({ error }))
           )
         )
@@ -110,12 +133,14 @@ export class TodoEffects {
         this.todoService.editTodo(payload).pipe(
           map((todo: Todo) => {
             this.snackbarService.openSnackBar(
-              `Successfully updated todo: ${todo.name}`,
+              `Successfully updated todo: ${todo.information.name}`,
               'OK!'
             );
             return actionsFromTodo.editTodoSuccess({ payload: todo });
           }),
-          catchError((error) => of(actionsFromTodo.editTodoFailure({ error })))
+          catchError((error: Error) =>
+            of(actionsFromTodo.editTodoFailure({ error }))
+          )
         )
       )
     )

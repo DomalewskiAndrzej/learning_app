@@ -5,7 +5,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { Todo } from '@app/app/to-do/domain';
+import { ItemInformation } from '@app/shared/domain';
 
 @Component({
   selector: 'app-ui-notification',
@@ -14,14 +14,12 @@ import { Todo } from '@app/app/to-do/domain';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiNotificationComponent {
-  @Input() notifications: any[];
-  @Input() todosInProgress: Todo[];
-  @Output() loadTodosInProgress = new EventEmitter<void>();
-  @Output() loadNotifications = new EventEmitter<void>();
+  @Input() notifications: ItemInformation[];
+  @Output() loadItems = new EventEmitter<void>();
+  @Input() spinner: boolean;
+  @Input() quantity: number;
 
-  onLoadMoreItems(): void {
-    this.notifications
-      ? this.loadNotifications.emit()
-      : this.loadTodosInProgress.emit();
+  onLoadItems(): void {
+    this.loadItems.emit();
   }
 }

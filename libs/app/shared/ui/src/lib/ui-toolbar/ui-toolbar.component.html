@@ -1,3 +1,9 @@
+<div class="progress-bar">
+  <mat-progress-bar
+    *ngIf="requestInProgress"
+    mode="indeterminate"
+  ></mat-progress-bar>
+</div>
 <mat-toolbar class="toolbar">
   <div>
     <button
@@ -13,16 +19,16 @@
   </div>
   <div>
     <button
-      (click)="onLoadTodosInProgress()"
-      [matMenuTriggerFor]="notificationsMenu"
+      (click)="onLoadTodosInProgressNotifications()"
+      [matMenuTriggerFor]="todosInProgessMenu"
       [matTooltip]="'Todos in progress'"
       class="toolbar__button"
       mat-icon-button
       type="button"
     >
       <mat-icon
-        [matBadgeHidden]="!todosInProgressQuantity"
-        [matBadge]="todosInProgressQuantity"
+        [matBadgeHidden]="!todosInProgressNotificationsQuantity"
+        [matBadge]="todosInProgressNotificationsQuantity"
         matBadgeColor="accent"
         matBadgePosition="after"
         matBadgeSize="small"
@@ -38,7 +44,7 @@
       type="button"
     >
       <mat-icon
-        [matBadgeHidden]="!notificationsMenu"
+        [matBadgeHidden]="!notificationsQuantity"
         [matBadge]="notificationsQuantity"
         matBadgeColor="warn"
         matBadgePosition="after"
@@ -52,16 +58,30 @@
   <ng-content></ng-content>
 </div>
 <mat-menu
+  #todosInProgessMenu="matMenu"
+  class="menu-notifications"
+  xPosition="before"
+>
+  <ng-template matMenuContent>
+    <app-ui-notification
+      (loadItems)="onLoadTodosInProgressNotifications()"
+      [notifications]="todosInProgressNotifications"
+      [quantity]="todosInProgressNotificationsQuantity"
+      [spinner]="notificationsRequestInProgress | async"
+    ></app-ui-notification>
+  </ng-template>
+</mat-menu>
+<mat-menu
   #notificationsMenu="matMenu"
   class="menu-notifications"
   xPosition="before"
 >
   <ng-template matMenuContent>
     <app-ui-notification
-      (loadNotifications)="onLoadNotifications()"
-      (loadTodosInProgress)="onLoadTodosInProgress()"
-      [notifications]="notifications | async"
-      [todosInProgress]="todosInProgress | async"
+      (loadItems)="onLoadNotifications()"
+      [notifications]="notifications"
+      [quantity]="notificationsQuantity"
+      [spinner]="notificationsRequestInProgress | async"
     ></app-ui-notification>
   </ng-template>
 </mat-menu>

@@ -1,13 +1,9 @@
-import { createAction, props } from '@ngrx/store';
+import { createActionGroup, emptyProps, props } from '@ngrx/store';
 
-export const toggleSidenav = createAction('[Home] Toggle Sidenav');
-
-export const requestInProgress = createAction(
-  '[Home] Request In Progress',
-  props<{ requestInProgress: boolean }>()
-);
-
-export const actionsFromHome = {
-  toggleSidenav,
-  requestInProgress,
-};
+export const actionsFromHome = createActionGroup({
+  source: 'Home',
+  events: {
+    'Toggle Sidenav': emptyProps(),
+    'Request In Progress': props<{ requestInProgress: boolean }>(),
+  },
+});

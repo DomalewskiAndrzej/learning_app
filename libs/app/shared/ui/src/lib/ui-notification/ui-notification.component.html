@@ -1,16 +1,42 @@
-<div *ngIf="notifications; else spinner" class="container">
-  <mat-expansion-panel (click)="$event.stopPropagation()">
-    <mat-expansion-panel-header *ngFor="let notification of notifications">
-      <mat-panel-title> {{ notification.name }}</mat-panel-title>
+<ng-container
+  *appNotificationsContentProjection="
+    !!notifications.length;
+    spinner: spinner;
+    notificationsRef: notificationsRef;
+    emptyRef: emptyRef;
+    spinnerRef: spinnerRef
+  "
+>
+</ng-container>
+
+<ng-template #notificationsRef>
+  <mat-expansion-panel
+    (click)="$event.stopPropagation()"
+    *ngFor="let notification of notifications"
+    class="container__notifications"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title> Name: {{ notification.name }}</mat-panel-title>
       <mat-panel-description>
-        {{ notification.information }}
+        Stage: {{ notification.dateOfStart }}
       </mat-panel-description>
       <ng-template matExpansionPanelContent>
-        {{ notification.description }}</ng-template
+        <span>Description: {{ notification.description }}</span></ng-template
       >
     </mat-expansion-panel-header>
   </mat-expansion-panel>
-</div>
-<ng-template #spinner>
+  <app-ui-load-items-button
+    (click)="$event.stopPropagation()"
+    (loadItems)="onLoadItems()"
+    [canLoadMoreItems]="notifications.length > quantity"
+    [requestInProgress]="spinner"
+  >
+    >
+  </app-ui-load-items-button>
+</ng-template>
+<ng-template #emptyRef>
+  <span>You dont have <strong>ANY</strong> notifications.</span>
+</ng-template>
+<ng-template #spinnerRef>
   <mat-spinner></mat-spinner>
 </ng-template>

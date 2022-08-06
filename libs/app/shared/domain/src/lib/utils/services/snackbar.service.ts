@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { appConfig } from '../../../../../resources/src';
+import { appConfig } from '@app/shared/resources';
 
 @Injectable()
 export class SnackbarService {

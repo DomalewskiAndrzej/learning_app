@@ -11,6 +11,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { SharedDomainModule } from '@app/shared/domain';
+import { SharedUiModule } from '@app/app-shared-ui';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SharedDomainModule } from '@app/shared/domain';
     MatCheckboxModule,
     MatIconModule,
     SharedDomainModule,
+    SharedUiModule,
   ],
   exports: [
     ActionButtonsComponent,

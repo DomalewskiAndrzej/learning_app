@@ -19,15 +19,25 @@ export class TodoFacade {
   getSelectedTodosUUID$: Observable<string[]> = this.store.pipe(
     select(toDoQuery.getSelectedTodosUUID)
   );
+  requestInProgress$: Observable<boolean> = this.store.pipe(
+    select(toDoQuery.requestInProgress)
+  );
+  canLoadMoreItems$: Observable<boolean> = this.store.pipe(
+    select(toDoQuery.canLoadMoreItems)
+  );
 
   constructor(private store: Store<TodoPartialState>) {}
 
-  startTodo(todo: Todo): void {
-    this.store.dispatch(actionsFromTodo.startTodo(todo));
+  startTodo(payload: Todo): void {
+    this.store.dispatch(actionsFromTodo.startTodo({ payload }));
   }
 
   loadTodos(payload: LoadItems): void {
     this.store.dispatch(actionsFromTodo.loadTodos({ payload }));
+  }
+
+  loadTodosQuantity(): void {
+    this.store.dispatch(actionsFromTodo.loadTodosQuantity());
   }
 
   addTodo(payload: Todo): void {

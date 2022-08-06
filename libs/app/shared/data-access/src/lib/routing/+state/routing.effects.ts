@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { pluck, tap } from 'rxjs';
 import { Router } from '@angular/router';
-import { routingActions } from './routing.actions';
+import { actionfFromRouting } from './routing.actions';
 import { Link } from '@app/shared/domain';
 import { Location } from '@angular/common';
 
@@ -11,7 +11,7 @@ export class RoutingEffects {
   navigate$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(routingActions.navigate),
+        ofType(actionfFromRouting.navigate),
         pluck('link'),
         tap((link: Link) => {
           this.router.navigate([link.path]);
@@ -23,7 +23,7 @@ export class RoutingEffects {
   goBack$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(routingActions.goBack),
+        ofType(actionfFromRouting.goBack),
         tap(() => {
           this.location.back();
         })

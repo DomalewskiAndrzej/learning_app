@@ -16,9 +16,14 @@ export class LayoutFeatureComponent implements OnInit {
   links = LINKS;
   routingUrl$ = this.routingFacade.getRoutingUrl$;
   sidenav$ = this.homeFacade.sidenav$;
-  todosInProgressQuantity$ =
+  todosInProgressNotificationsQuantity$ =
     this.notificationsFacade.getTodosInProgressQuantity$;
+  todosInProgressNotifications$ = this.notificationsFacade.getTodosInProgress$;
   notificationsQuantity$ = this.notificationsFacade.getNotificationsQuantity$;
+  notifications$ = this.notificationsFacade.getNotifications$;
+  requestInProgress$ = this.homeFacade.requestInProgress$;
+  notificationsRequestInProgress$ =
+    this.notificationsFacade.notificationsRequestInProgress$;
 
   constructor(
     private routingFacade: RoutingFacade,
@@ -28,7 +33,7 @@ export class LayoutFeatureComponent implements OnInit {
 
   ngOnInit(): void {
     this.notificationsFacade.loadNotificationsQuantity();
-    this.notificationsFacade.loadTodosInProgressQuantity();
+    this.notificationsFacade.loadTodosInProgressNotificationsQuantity();
   }
 
   navigateBack() {
@@ -39,8 +44,8 @@ export class LayoutFeatureComponent implements OnInit {
     this.routingFacade.navigate(link);
   }
 
-  loadTodosInProgress(loadItems: LoadItems): void {
-    this.notificationsFacade.loadTodosInProgress(loadItems);
+  loadTodosInProgressNotifications(loadItems: LoadItems): void {
+    this.notificationsFacade.loadTodosInProgressNotifications(loadItems);
   }
 
   loadNotifications(loadItems: LoadItems): void {

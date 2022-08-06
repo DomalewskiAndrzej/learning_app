@@ -13,6 +13,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { appConfig } from '@app/shared/resources';
 import { LoadItems, PaginatorOptions } from '@app/shared/domain';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-to-do-table',
@@ -28,7 +29,8 @@ export class TodoTableComponent implements AfterViewInit {
   @Output() deleteTodo = new EventEmitter<string>();
   @Output() editTodo = new EventEmitter<Todo>();
   @Input() lastOpenedTodosUUID: string[];
-  @Input() requestInProgress: boolean;
+  @Input() requestInProgress$: Observable<boolean>;
+  @Input() canLoadMoreItems: boolean;
   displayedColumns = appConfig.todoTableDisplayedColums;
   todosSelection = new SelectionModel<Todo>(true, []);
   dataSource = new MatTableDataSource<Todo>([]);
@@ -45,9 +47,11 @@ export class TodoTableComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  onLoadTodos(pageSize: number): void {
-    const offset = pageSize - this.dataSource.data.length;
-    if (offset > 0) {
+  onLoadTodos(pageSize?: number): void {
+    if (this.canLoadMoreItems) {
+      const offset = pageSize
+        ? pageSize - this.dataSource.data.length
+        : appConfig.itemsPerLoad;
       this.loadTodos.emit({ offset });
     }
   }

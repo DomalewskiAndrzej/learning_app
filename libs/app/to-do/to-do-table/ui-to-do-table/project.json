@@ -1,13 +1,12 @@
 {
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/app/to-do/to-do-table/ui-to-do-table/src",
   "prefix": "app",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/app/to-do/to-do-table/ui-to-do-table"
-      ],
+      "outputs": ["coverage/libs/app/to-do/to-do-table/ui-to-do-table"],
       "options": {
         "jestConfig": "libs/app/to-do/to-do-table/ui-to-do-table/jest.config.ts",
         "passWithNoTests": true

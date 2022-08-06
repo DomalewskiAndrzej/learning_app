@@ -12,6 +12,10 @@ body {
 }
 
 .menu-notifications {
-  max-width: 650px !important;
-  padding: 20px;
+  padding: 0.5em 1em;
+  min-height: 30px !important;
+  max-height: 200px !important;
+  max-width: 400px !important;
+  display: flex;
+  flex-direction: column;
 }

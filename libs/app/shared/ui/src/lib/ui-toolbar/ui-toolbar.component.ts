@@ -5,8 +5,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { Todo } from '@app/app/to-do/domain';
-import { LoadItems } from '@app/shared/domain';
+import { ItemInformation, LoadItems } from '@app/shared/domain';
 import { appConfig } from '@app/shared/resources';
 import { Observable } from 'rxjs';
 
@@ -18,23 +17,37 @@ import { Observable } from 'rxjs';
 })
 export class UiToolbarComponent {
   @Output() navigateBack = new EventEmitter<void>();
-  @Output() loadTodosInProgress = new EventEmitter<LoadItems>();
+  @Output() loadTodosInProgressNotifications = new EventEmitter<LoadItems>();
   @Output() loadNotifications = new EventEmitter<LoadItems>();
   @Input() sidenav: boolean;
-  @Input() notifications: Observable<Notification[]>;
-  @Input() todosInProgress: Observable<Todo[]>;
+  @Input() notifications: ItemInformation[];
   @Input() notificationsQuantity: number;
-  @Input() todosInProgressQuantity: number;
+  @Input() todosInProgressNotifications: ItemInformation[];
+  @Input() todosInProgressNotificationsQuantity: number;
+  @Input() requestInProgress: boolean;
+  @Input() notificationsRequestInProgress: Observable<boolean>;
 
   onNavigateBack(): void {
     this.navigateBack.emit();
   }
 
-  onLoadTodosInProgress(): void {
-    this.loadTodosInProgress.emit({ offset: appConfig.itemsPerLoad });
+  onLoadTodosInProgressNotifications(): void {
+    if (
+      this.todosInProgressNotificationsQuantity -
+        this.todosInProgressNotifications.length >
+      0
+    ) {
+      this.loadTodosInProgressNotifications.emit({
+        offset: appConfig.itemsPerLoad,
+      });
+    }
   }
 
   onLoadNotifications(): void {
-    this.loadNotifications.emit({ offset: appConfig.itemsPerLoad });
+    if (this.notificationsQuantity - this.notifications.length > 0) {
+      this.loadNotifications.emit({
+        offset: appConfig.itemsPerLoad,
+      });
+    }
   }
 }
