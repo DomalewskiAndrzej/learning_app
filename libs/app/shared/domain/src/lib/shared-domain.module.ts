@@ -4,11 +4,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackbarService } from './services/snackbar.service';
 import { TimeParser } from './services/time-parser.service';
 import { TransformTimePipe } from './pipes/transform-time.pipe';
-import { NotificationsContentProjectionDirective } from './directives/notifications-content-projection.directive';
+import { NotificationStagePipe } from './pipes/notification-stage.pipe';
 
 @NgModule({
-  declarations: [TransformTimePipe, NotificationsContentProjectionDirective],
-  exports: [TransformTimePipe, NotificationsContentProjectionDirective],
+  declarations: [TransformTimePipe, NotificationStagePipe],
+  exports: [TransformTimePipe, NotificationStagePipe],
   imports: [CommonModule, MatSnackBarModule],
   providers: [SnackbarService, TimeParser],
 })

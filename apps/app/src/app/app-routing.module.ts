@@ -5,7 +5,9 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('@app/app/shared/feature').then((m) => m.SharedFeatureModule),
+      import('@app/app-shared-layout-shell').then(
+        (m) => m.SharedLayoutShellModule
+      ),
   },
 ];
 

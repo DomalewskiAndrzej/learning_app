@@ -8,7 +8,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Todo, ToDoAddEditDialogData } from '@app/app/to-do/domain';
 import { appConfig } from '@app/shared/resources';
-import { TimeToCompleteValidator } from '../validators/time-to-complete.validator';
+import { TimeToCompleteValueValidator } from '../validators/time-to-complete-value.validator';
+import { TimeToCompleteFormatValidator } from '../validators/time-to-complete-format.validator';
 
 @Component({
   selector: 'app-to-do-add-edit-dialog',
@@ -44,13 +45,21 @@ export class TodoAddEditDialogComponent implements OnInit {
   onSubmit(): void {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      this.dialogRef.close({ ...this.todo, ...this.form.value });
+      const todo = {
+        timeToComplete: this.form.controls['timeToComplete'].value,
+        priority: this.form.controls['priority'].value,
+        information: {
+          name: this.form.controls['name'].value,
+          description: this.form.controls['description'].value,
+        },
+      };
+      this.dialogRef.close({ ...this.todo, ...todo });
     } else {
       this.error = true;
     }
   }
 
-  initForm(todo: Todo, editMode: boolean): void {
+  private initForm(todo: Todo, editMode: boolean): void {
     this.form = new FormGroup({
       name: new FormControl(editMode ? todo?.information.name : null, [
         Validators.required,
@@ -61,7 +70,11 @@ export class TodoAddEditDialogComponent implements OnInit {
       ),
       timeToComplete: new FormControl(
         editMode ? todo?.timeToComplete : '00:00',
-        [Validators.required, TimeToCompleteValidator()]
+        [
+          Validators.required,
+          TimeToCompleteValueValidator(),
+          TimeToCompleteFormatValidator(),
+        ]
       ),
       priority: new FormControl(editMode ? todo?.priority : null, [
         Validators.required,

@@ -9,20 +9,25 @@
         matInput
       />
       <mat-error *ngIf="error && form.controls['name'].invalid"
-        >This field is required
+      >This field is required
       </mat-error>
     </mat-form-field>
     <mat-form-field class="form__time-to-complete">
+      <mat-label>Time to complete</mat-label>
       <input
         [matTooltip]="'How much time you give for completing todo'"
-        [placeholder]="'Time to complete'"
+        [placeholder]="'HH:MM'"
         formControlName="timeToComplete"
         matInput
-        type="time"
       />
-      <mat-error *ngIf="error && form.controls['timeToComplete'].errors"
-        >Time to complete cannot equal 0
+      <mat-error *ngIf="error && form.controls['timeToComplete'].errors?.['invalidTime']; else error"
+      >Time to complete cannot equal 0
       </mat-error>
+      <ng-template #error>
+        <mat-error *ngIf="error && form.controls['timeToComplete'].errors?.['invalidFormat']"
+        >Format of time is incorrect
+        </mat-error>
+      </ng-template>
     </mat-form-field>
     <mat-form-field class="form__priority">
       <mat-label>Priority</mat-label>
@@ -33,11 +38,11 @@
         <mat-option
           *ngFor="let priority of priorities | keyvalue"
           [value]="priority.key"
-          >{{ priority.value }}</mat-option
+        >{{ priority.value }}</mat-option
         >
       </mat-select>
       <mat-error *ngIf="error && form.controls['priority'].invalid"
-        >This field is required
+      >This field is required
       </mat-error>
     </mat-form-field>
     <mat-form-field class="form__description">
@@ -51,7 +56,7 @@
         matInput
       ></textarea>
       <mat-error *ngIf="error && form.controls['description'].invalid"
-        >This field is required
+      >This field is required
       </mat-error>
     </mat-form-field>
   </form>

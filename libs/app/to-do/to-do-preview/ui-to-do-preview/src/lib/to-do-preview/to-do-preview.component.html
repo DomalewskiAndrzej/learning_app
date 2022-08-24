@@ -2,18 +2,23 @@
   <h1>Todo Preview</h1>
   <mat-card *ngFor="let todo of todos" class="container__card">
     <mat-card-title
-      >Name: <strong>{{ todo.information.name }}</strong></mat-card-title
+    >Name: <strong>{{ todo.information.name }}</strong></mat-card-title
     >
-    <mat-card-subtitle
-      >Priority: <strong>{{ todo.priority }}</strong
-      >, Time to complete:
-      <strong>{{
-        todo.timeToComplete | transformTime
-      }}</strong></mat-card-subtitle
+    <mat-card-subtitle class="container__card--subtitle"
+    ><span>Priority: <strong>{{ todo.priority }}</strong>
+    </span>
+      <span>Time to complete:
+        <strong>{{ todo.timeToComplete | transformTime }}</strong>
+      </span>
+    </mat-card-subtitle
     >
-    <mat-card-content
-      >Description: {{ todo.information.description }}</mat-card-content
-    >
+    <mat-card-content class="container__card--content"
+    ><p>Description: {{ todo.information.description }}</p>
+      <p *ngIf="todo.dateOfStart">
+        Date of start:
+        {{ todo.dateOfStart * 1000 | date: 'dd/MM/yyyy - HH:MM' }}
+      </p>
+    </mat-card-content>
     <mat-card-actions class="container__card--actions">
       <button
         (click)="onEditTodo(todo)"
@@ -25,12 +30,23 @@
       </button>
       <button
         (click)="onStartTodo(todo)"
+        *ngIf="!todo.dateOfStart; else finishTodo"
         class="container__card--actions-btn"
         mat-raised-button
         type="button"
       >
         Start Todo
       </button>
+      <ng-template #finishTodo>
+        <button
+          (click)="onFinishTodo(todo)"
+          class="container__card--actions-btn"
+          mat-raised-button
+          type="button"
+        >
+          Finish Todo
+        </button>
+      </ng-template>
     </mat-card-actions>
   </mat-card>
 </div>

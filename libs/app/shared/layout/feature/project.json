@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/app/shared/layout/feature/src",
+  "prefix": "app",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app/shared/ui-sidenav"],
+      "options": {
+        "jestConfig": "libs/app/shared/ui-sidenav/jest.config.ts",
+        "outputs": ["coverage/libs/app/shared/layout/feature"],
+        "options": {
+          "jestConfig": "libs/app/shared/layout/feature/jest.config.ts",
+          "passWithNoTests": true
+        }
+      },
+      "lint": {
+        "executor": "@nrwl/linter:eslint",
+        "options": {
+          "lintFilePatterns": [
+            "libs/app/shared/ui-sidenav/**/*.ts",
+            "libs/app/shared/ui-sidenav/**/*.html",
+            "libs/app/shared/layout/feature/**/*.ts",
+            "libs/app/shared/layout/feature/**/*.html"
+          ]
+        }
+      }
+    },
+    "tags": {}
+  }
+}

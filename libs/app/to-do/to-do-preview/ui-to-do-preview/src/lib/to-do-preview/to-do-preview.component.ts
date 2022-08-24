@@ -6,7 +6,6 @@ import {
   Output,
 } from '@angular/core';
 import { Todo } from '@app/app/to-do/domain';
-import { appConfig } from '@app/shared/resources';
 
 @Component({
   selector: 'app-to-do-preview',
@@ -17,8 +16,8 @@ import { appConfig } from '@app/shared/resources';
 export class TodoPreviewComponent {
   @Output() editTodo = new EventEmitter<Todo>();
   @Output() startTodo = new EventEmitter<Todo>();
+  @Output() finishTodo = new EventEmitter<Todo>();
   @Input() todos: Todo[];
-  priorities = appConfig.priorities;
 
   onEditTodo(todo: Todo): void {
     this.editTodo.emit(todo);
@@ -26,5 +25,9 @@ export class TodoPreviewComponent {
 
   onStartTodo(todo: Todo): void {
     this.startTodo.emit(todo);
+  }
+
+  onFinishTodo(todo: Todo): void {
+    this.finishTodo.emit(todo);
   }
 }

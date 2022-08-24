@@ -1,0 +1,132 @@
+<div class="progress-bar">
+  <mat-progress-bar
+    *ngIf="requestInProgress"
+    mode="indeterminate"
+  ></mat-progress-bar>
+</div>
+<mat-toolbar class="toolbar">
+  <div>
+    <button
+      (click)="onNavigateBack()"
+      *ngIf="!sidenav"
+      [matTooltip]="'Navigate back'"
+      class="toolbar__button"
+      mat-icon-button
+      type="button"
+    >
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+  </div>
+  <div>
+    <button
+      [matMenuTriggerFor]="todosInProgessMenu"
+      [matTooltip]="'Todos in progress'"
+      class="toolbar__button"
+      mat-icon-button
+      type="button"
+    >
+      <mat-icon
+        [matBadgeHidden]="!todosInProgressNotificationsQuantity"
+        [matBadge]="todosInProgressNotificationsQuantity"
+        matBadgeColor="accent"
+        matBadgePosition="after"
+        matBadgeSize="small"
+      >event_busy
+      </mat-icon>
+    </button>
+    <button
+      [matMenuTriggerFor]="notificationsMenu"
+      [matTooltip]="'Notifications'"
+      class="toolbar__button"
+      mat-icon-button
+      type="button"
+    >
+      <mat-icon
+        [matBadgeHidden]="!notificationsQuantity"
+        [matBadge]="notificationsQuantity"
+        matBadgeColor="warn"
+        matBadgePosition="after"
+        matBadgeSize="large"
+      >notifications
+      </mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+<div class="content">
+  <ng-content></ng-content>
+</div>
+<mat-menu
+  #todosInProgessMenu="matMenu"
+  class="menu-notifications"
+  xPosition="before"
+>
+  <ng-template matMenuContent>
+    <app-ui-notification
+      (loadItems)="onLoadTodosInProgressNotifications()"
+      [canLoadMoreItems]="todosInProgressNotifications.length < todosInProgressNotificationsQuantity"
+      [isNotification]="!!todosInProgressNotifications.length"
+      [spinner]="notificationsRequestInProgress | async"
+    >
+      <ng-template #notificationUi>
+        <mat-expansion-panel
+          (click)="$event.stopPropagation()"
+          *ngFor="let todo of todosInProgressNotifications"
+          class="notifications">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="notifications__title">
+              Name: {{ todo.information.name }}</mat-panel-title
+            >
+            <mat-panel-description class="notifications__description">
+              Priority: {{ todo.priority }}
+            </mat-panel-description>
+            <ng-template matExpansionPanelContent>
+              <div class="notifications__content">
+                <span>Description: {{ todo.information.description }}</span>
+                <button (click)="onOpenNotification(todo)" *ngIf="todo.information.canOpen" color="accent"
+                        mat-raised-button
+                        type="button">
+                  Open
+                </button>
+              </div>
+            </ng-template>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+      </ng-template>
+    </app-ui-notification>
+  </ng-template>
+</mat-menu>
+<mat-menu
+  #notificationsMenu="matMenu"
+  class="menu-notifications"
+  xPosition="before"
+>
+  <ng-template matMenuContent>
+    <app-ui-notification
+      (loadItems)="onLoadTodosInProgressNotifications()"
+      [canLoadMoreItems]="notifications.length < notificationsQuantity"
+      [isNotification]="!!notifications.length"
+      [spinner]="notificationsRequestInProgress | async"
+    >
+      <ng-template #notificationUi>
+        <mat-expansion-panel
+          (click)="$event.stopPropagation()"
+          *ngFor="let notification of notifications"
+          class="notifications">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="notifications__title">
+              Name: {{ notification.itemInformation.name }}</mat-panel-title
+            >
+            <mat-panel-description class="notifications__description">
+              {{notification.itemInformation.description}}
+            </mat-panel-description>
+            <ng-template matExpansionPanelContent>
+              <div class="notifications__content">
+                <span>Description: {{ notification.itemInformation.description }}</span>
+              </div>
+            </ng-template>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+      </ng-template>
+    </app-ui-notification>
+  </ng-template>
+</mat-menu>

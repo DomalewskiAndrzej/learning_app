@@ -1,0 +1,14 @@
+<button (click)="throwSyncError()" mat-raised-button type="button">Throw sync error and catch globally</button>
+
+<button (click)="throwSyncErrorAndHandleLocally()" mat-raised-button type="button">Throw sync error and catch locally
+</button>
+
+<button (click)="throwAsyncError()" mat-raised-button type="button">Throw async error and catch glocally
+</button>
+
+<button (click)="throwAsyncErrorWithRxjs()" mat-raised-button type="button">Throw async error with RxJS and catch
+  globally
+</button>
+
+<button (click)="makeRequest()" mat-raised-button type="button">Throw error after third request and handle it globally
+</button>

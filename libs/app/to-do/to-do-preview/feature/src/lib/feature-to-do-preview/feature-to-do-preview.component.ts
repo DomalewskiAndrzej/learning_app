@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { TodoFacade } from '@app/app/to-do/data-access';
 import { Todo } from '@app/app/to-do/domain';
-import { HomeFacade } from '@app/shared/data-access';
+import { HomeFacade, RoutingFacade } from '@app/shared/data-access';
 import { TodoDialogService } from '@app/app/to-do/shared/services';
+import { NAVIGATION_PATHS } from '@app/shared/domain';
 
 @Component({
   selector: 'app-feature-to-do-preview',
@@ -16,7 +17,8 @@ export class FeatureToDoPreviewComponent implements OnDestroy {
   constructor(
     private todoFacade: TodoFacade,
     private todoDialogService: TodoDialogService,
-    private homeFacade: HomeFacade
+    private homeFacade: HomeFacade,
+    private routingFacade: RoutingFacade
   ) {}
 
   ngOnDestroy() {
@@ -29,5 +31,10 @@ export class FeatureToDoPreviewComponent implements OnDestroy {
 
   onEditTodo(todo: Todo): void {
     this.todoDialogService.editTodo(todo);
+  }
+
+  onFinishTodo(todo: Todo): void {
+    this.todoFacade.finishTodo(todo);
+    this.routingFacade.navigate({ path: NAVIGATION_PATHS.todoList });
   }
 }

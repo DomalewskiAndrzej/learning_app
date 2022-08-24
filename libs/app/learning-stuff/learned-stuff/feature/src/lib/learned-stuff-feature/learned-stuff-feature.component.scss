@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 3em;
+  height: 80%;
+}
+
+.container {
+  width: 80%;
+  height: 100%;
+  display: flex;
+
+  &__change-detection {
+    margin-top: 1em;
+  }
+}
+
+:host ::ng-deep {
+  .mat-tab-body-wrapper {
+    flex: 1;
+  }
+}
+
+.horizontal-line {
+  width: 100%;
+}

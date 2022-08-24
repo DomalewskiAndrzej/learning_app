@@ -1,0 +1,39 @@
+{
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/app/shared/layout/shell/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/app/shared/layout/shell"],
+      "options": {
+        "tsConfig": "libs/app/shared/layout/shell/tsconfig.lib.json",
+        "project": "libs/app/shared/layout/shell/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/app/shared/layout/shell/tsconfig.lib.prod.json"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/app/shared/layout/shell/**/*.ts",
+          "libs/app/shared/layout/shell/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app/shared/layout/shell"],
+      "options": {
+        "jestConfig": "libs/app/shared/layout/shell/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

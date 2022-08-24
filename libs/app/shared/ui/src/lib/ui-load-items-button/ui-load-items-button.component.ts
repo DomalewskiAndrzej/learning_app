@@ -18,7 +18,8 @@ export class UiLoadItemsButtonComponent {
   @Input() diameter = 100;
   @Input() canLoadMoreItems: boolean;
 
-  onLoadItems(): void {
+  onLoadItems($event: Event): void {
+    $event.stopPropagation();
     this.loadItems.emit();
   }
 }

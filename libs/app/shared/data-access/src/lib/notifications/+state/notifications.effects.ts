@@ -3,7 +3,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { actionsFromNotifications } from './notifications.actions';
 import { catchError, map, of, pluck, switchMap } from 'rxjs';
 import { NotificationsService } from '../services/notifications.service';
-import { ItemInformation } from '@app/shared/domain';
+import { Notification } from '@app/shared/domain';
+import { Todo } from '@app/app/to-do/domain';
 
 @Injectable()
 export class NotificationsEffects {
@@ -39,9 +40,9 @@ export class NotificationsEffects {
         this.notificationsService
           .loadTodosInProgressNotifications(loadItems.offset)
           .pipe(
-            map((notifications: ItemInformation[]) =>
+            map((notifications: Todo[]) =>
               actionsFromNotifications.loadTodosInProgressNotificationsSuccess({
-                notifications,
+                todosInProgressNotifications: notifications,
               })
             ),
             catchError((error: Error) =>
@@ -80,7 +81,7 @@ export class NotificationsEffects {
       pluck('loadItems'),
       switchMap((loadItems) =>
         this.notificationsService.loadNotifications(loadItems.offset).pipe(
-          map((notifications: ItemInformation[]) =>
+          map((notifications: Notification[]) =>
             actionsFromNotifications.loadNotificationsSuccess({
               notifications,
             })

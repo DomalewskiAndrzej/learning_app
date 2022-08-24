@@ -1,6 +1,6 @@
 <div class="container">
   <button
-    (click)="onLoadItems()"
+    (click)="onLoadItems($event)         "
     *ngIf="canLoadMoreItems && !requestInProgress"
     mat-raised-button
     type="button"

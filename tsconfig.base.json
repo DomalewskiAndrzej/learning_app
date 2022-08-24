@@ -17,16 +17,34 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@app/app-shared-layout-feature": [
+        "libs/app/shared/layout/feature/src/index.ts"
+      ],
+      "@app/app-shared-layout-shell": [
+        "libs/app/shared/layout/shell/src/index.ts"
+      ],
       "@app/app-shared-ui": ["libs/app/shared/ui/src/index.ts"],
-      "@app/app/shared/feature": ["libs/app/shared/feature/src/index.ts"],
+      "@app/app/learning-stuff/domain": [
+        "libs/app/learning-stuff/domain/src/index.ts"
+      ],
+      "@app/app/learning-stuff/learned-stuff-shell": [
+        "libs/app/learning-stuff/learned-stuff-shell/src/index.ts"
+      ],
+      "@app/app/learning-stuff/learned-stuff/feature": [
+        "libs/app/learning-stuff/learned-stuff/feature/src/index.ts"
+      ],
+      "@app/app/learning-stuff/learned-stuff/ui": [
+        "libs/app/learning-stuff/learned-stuff/ui/src/index.ts"
+      ],
+      "@app/app/learning-stuff/shared/services": [
+        "libs/app/learning-stuff/shared/services/src/index.ts"
+      ],
+      "@app/app/learning-stuff/shared/ui": [
+        "libs/app/learning-stuff/shared/ui/src/index.ts"
+      ],
+      "@app/app/shared/layout/ui": ["libs/app/shared/layout/ui/src/index.ts"],
       "@app/app/shared/ui-sidenav": ["libs/app/shared/ui-sidenav/src/index.ts"],
       "@app/app/shared/ui-toolbar": ["libs/app/shared/ui-toolbar/src/index.ts"],
-      "@app/app/starting-page/feature": [
-        "libs/app/starting-page/feature/src/index.ts"
-      ],
-      "@app/app/starting-page/ui-starting-page": [
-        "libs/app/starting-page/ui-starting-page/src/index.ts"
-      ],
       "@app/app/to-do/data-access": ["libs/app/to-do/data-access/src/index.ts"],
       "@app/app/to-do/domain": ["libs/app/to-do/domain/src/index.ts"],
       "@app/app/to-do/shared/services": [

@@ -12,7 +12,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { appConfig } from '@app/shared/resources';
-import { LoadItems, PaginatorOptions } from '@app/shared/domain';
+import { LoadItems } from '@app/shared/domain';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -34,7 +34,7 @@ export class TodoTableComponent implements AfterViewInit {
   displayedColumns = appConfig.todoTableDisplayedColums;
   todosSelection = new SelectionModel<Todo>(true, []);
   dataSource = new MatTableDataSource<Todo>([]);
-  paginatorOptions: PaginatorOptions = appConfig.paginatorOptions;
+  paginatorOptions = appConfig.paginatorOptions;
 
   @Input() set todos(todos: Todo[]) {
     if (this.paginator?.pageSize) {
@@ -47,12 +47,9 @@ export class TodoTableComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  onLoadTodos(pageSize?: number): void {
+  onLoadTodos(): void {
     if (this.canLoadMoreItems) {
-      const offset = pageSize
-        ? pageSize - this.dataSource.data.length
-        : appConfig.itemsPerLoad;
-      this.loadTodos.emit({ offset });
+      this.loadTodos.emit({ offset: appConfig.itemsPerLoad });
     }
   }
 

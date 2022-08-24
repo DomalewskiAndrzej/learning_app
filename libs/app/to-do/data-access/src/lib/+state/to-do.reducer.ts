@@ -61,17 +61,22 @@ export const TodoReducer = createReducer(
     return adapter.removeMany(action.payload, state);
   }),
 
-  on(actionsFromTodo.editTodoSuccess, (state, action) => {
-    const selectedTodos = state.selectedTodos
-      ? state.selectedTodos.map((todo) =>
-          todo.uuid === action.payload.uuid ? action.payload : todo
-        )
-      : [];
-    return adapter.updateOne(
-      { id: action.payload.uuid, changes: { ...action.payload } },
-      { ...state, selectedTodos }
-    );
-  }),
+  on(
+    actionsFromTodo.editTodoSuccess,
+    actionsFromTodo.startTodoSuccess,
+    actionsFromTodo.finishTodoSuccess,
+    (state, action) => {
+      const selectedTodos = state.selectedTodos
+        ? state.selectedTodos.map((todo) =>
+            todo.uuid === action.payload.uuid ? action.payload : todo
+          )
+        : [];
+      return adapter.updateOne(
+        { id: action.payload.uuid, changes: { ...action.payload } },
+        { ...state, selectedTodos }
+      );
+    }
+  ),
 
   on(actionsFromTodo.selectTodos, (state, action) => {
     return { ...state, selectedTodos: action.payload };

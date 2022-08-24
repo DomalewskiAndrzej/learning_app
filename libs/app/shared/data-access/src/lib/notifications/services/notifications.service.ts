@@ -1,47 +1,50 @@
 import { Injectable } from '@angular/core';
-import { map, Observable, of, timer } from 'rxjs';
-import { ItemInformation } from '@app/shared/domain';
+import { map, Observable, of, switchMap, timer } from 'rxjs';
+import { Notification } from '@app/shared/domain';
 import { Todo } from '@app/app/to-do/domain';
 
 @Injectable()
 export class NotificationsService {
   lastTodosInProgressNotificationsOffset = 0;
-  todosInProgressNotifications: ItemInformation[] = JSON.parse(
+  todosInProgressNotifications: string[] = JSON.parse(
     localStorage.getItem('startedTodos')
-  ).map((todo: Todo) => todo.information);
+  );
   lastNotificationOffset = 0;
-  notifications: ItemInformation[] = JSON.parse(
+  notifications: Notification[] = JSON.parse(
     localStorage.getItem('notifications')
   );
 
   loadNotificationsQuantity(): Observable<number> {
-    return of(this.notifications?.length ? this.notifications?.length : 0);
+    return timer(1000).pipe(switchMap(() => of(this.notifications?.length)));
   }
 
   loadTodosInProgressQuantity(): Observable<number> {
-    return of(
-      this.todosInProgressNotifications?.length
-        ? this.todosInProgressNotifications?.length
-        : 0
+    return timer(1000).pipe(
+      switchMap(() => of(this.todosInProgressNotifications?.length))
     );
   }
 
-  loadTodosInProgressNotifications(
-    offset: number
-  ): Observable<ItemInformation[]> {
+  loadTodosInProgressNotifications(offset: number): Observable<Todo[]> {
+    const todosUuid = this.todosInProgressNotifications?.slice(
+      this.lastTodosInProgressNotificationsOffset,
+      this.lastTodosInProgressNotificationsOffset + offset
+    );
+    this.lastTodosInProgressNotificationsOffset += offset;
+    const notifications: Todo[] = JSON.parse(
+      localStorage.getItem('todosMemory')
+    );
     return timer(1000).pipe(
       map(() => {
-        const notifications = this.todosInProgressNotifications?.slice(
-          this.lastTodosInProgressNotificationsOffset,
-          this.lastTodosInProgressNotificationsOffset + offset
-        );
-        this.lastTodosInProgressNotificationsOffset += offset;
-        return notifications ? notifications : [];
+        return notifications
+          ? notifications.filter((notification: Todo) =>
+              todosUuid?.includes(notification.uuid)
+            )
+          : [];
       })
     );
   }
 
-  loadNotifications(offset: number): Observable<ItemInformation[]> {
+  loadNotifications(offset: number): Observable<Notification[]> {
     return timer(1000).pipe(
       map(() => {
         const notifications = this.notifications?.slice(

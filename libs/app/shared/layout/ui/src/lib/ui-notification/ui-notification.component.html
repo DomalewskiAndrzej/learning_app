@@ -1,0 +1,28 @@
+<mat-spinner
+  *appNotificationsContentProjection="
+    isNotification;
+    spinner: spinner;
+    notificationsRef: notificationsRef;
+    emptyRef: emptyRef
+  "
+>
+</mat-spinner>
+
+<ng-template #notificationsRef>
+  <div class="container">
+    <ng-container *ngTemplateOutlet="notificationUi">
+    </ng-container>
+    <div class="container__load-button">
+      <app-ui-load-items-button
+        (loadItems)="onLoadItems()"
+        [canLoadMoreItems]="canLoadMoreItems"
+        [requestInProgress]="spinner"
+      >
+      </app-ui-load-items-button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #emptyRef>
+  <span>You dont have <strong>ANY</strong> notifications.</span>
+</ng-template>

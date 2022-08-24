@@ -10,6 +10,7 @@ import { HomeFacade } from './home/+state/home.facade';
 import { NotificationsFacade } from './notifications/+state/notifications.facade';
 import { NotificationsEffects } from './notifications/+state/notifications.effects';
 import { NotificationsService } from './notifications/services/notifications.service';
+import { NotificationRequestInProgressService } from './notifications/services/notification-request-in-progress.service';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { NotificationsService } from './notifications/services/notifications.ser
     HomeFacade,
     NotificationsFacade,
     NotificationsService,
+    NotificationRequestInProgressService,
   ],
 })
 export class SharedDataAccessModule {}

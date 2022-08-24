@@ -1,0 +1,6 @@
+<p *ngIf="!!asyncPipeVariable; else spinner">{{asyncPipeVariable}}</p>
+
+<ng-template #spinner>
+  <p>Waiting...</p>
+  <mat-spinner></mat-spinner>
+</ng-template>

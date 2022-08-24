@@ -1,5 +1,8 @@
+import { ItemType } from '../enums/item-type.enum';
+
 export interface ItemInformation {
   name: string;
   description: string;
-  dateOfStart?: number;
+  canOpen: boolean;
+  itemType: typeof ItemType[keyof typeof ItemType];
 }

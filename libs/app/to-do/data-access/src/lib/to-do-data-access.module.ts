@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 import { TodoEffects } from './+state/to-do.effects';
-import { ToDoService } from './services/to-do/to-do.service';
+import { ToDoService } from './services/to-do.service';
 import { StoreModule } from '@ngrx/store';
 import {
   initialState as ToDoInitialState,

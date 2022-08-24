@@ -1,15 +1,15 @@
-import { appConfig } from '@app/shared/resources';
 import { ItemInformation } from '@app/shared/domain';
+import { appConfig } from '@app/shared/resources';
 
 export interface Todo {
   id: number;
   uuid: string;
-  priority: keyof typeof appConfig.priorities;
+  information: ItemInformation;
   timeToComplete:
     | `${'0' | '1'}${zero_nine}:${zero_fiftyNine}`
     | `${'2'}${zero_three}:${zero_fiftyNine}`;
-  inProgress: boolean;
-  information: ItemInformation;
+  priority: keyof typeof appConfig.priorities;
+  dateOfStart?: number;
 }
 
 type zero_three = '0' | '1' | '2' | '3';

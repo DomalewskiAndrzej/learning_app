@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TransformTimePipe implements PipeTransform {
   transform(value: string): string {
-    const tranformedTime = value
+    const transformedTime = value
       .replaceAll('00', '')
       .split(':')
       .map((time: string, index: number) => {
@@ -17,10 +17,10 @@ export class TransformTimePipe implements PipeTransform {
         }
         return '';
       });
-    if (tranformedTime[0] !== '' && tranformedTime[1] !== '') {
-      return tranformedTime.join(' & ');
+    if (transformedTime[0] !== '' && transformedTime[1] !== '') {
+      return transformedTime.join(' & ');
     }
-    return tranformedTime.join('');
+    return transformedTime.join('');
   }
 
   replaceZeros(value: string): string {

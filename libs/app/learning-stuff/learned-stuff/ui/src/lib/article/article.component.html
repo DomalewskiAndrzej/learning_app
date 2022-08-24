@@ -1,0 +1,27 @@
+<ng-template *ngTemplateOutlet="exampleOnTop"></ng-template>
+<ng-container *ngFor="let item of article">
+  <h1 *ngIf="item?.title" class="title">{{ item.title }}</h1>
+  <ng-container *ngIf="item?.description"
+  ><p
+    *ngFor="let description of item.description"
+    [class.description__subtitle]="item.descriptionSubtitle"
+    class="description"
+  >
+    {{ description }}
+  </p></ng-container
+  >
+  <div *ngIf="item?.translations" class="translations">
+    <span>Translations:</span>
+    <ol>
+      <li *ngFor="let translation of item.translations">{{ translation }}</li>
+    </ol>
+  </div>
+  <div class="image">
+    <img
+      *ngIf="item?.img"
+      [alt]="['Something went wrong with image source - ' + item.img]"
+      [src]="item.img"
+    />
+  </div>
+</ng-container>
+<ng-template *ngTemplateOutlet="exampleOnBottom"></ng-template>

@@ -1,0 +1,40 @@
+:host {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 2em;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+}
+
+.description {
+  word-break: break-word;
+  white-space: pre-line;
+
+  &__subtitle {
+    font-weight: bold;
+    font-size: 1.3em;
+  }
+}
+
+.translations {
+  & > span {
+    font-weight: bold;
+  }
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  & > img {
+    padding: 1em;
+  }
+}

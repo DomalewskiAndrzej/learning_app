@@ -1,0 +1,16 @@
+:host {
+  overflow: auto;
+}
+
+.container {
+  width: 400px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__load-button {
+    margin-top: 0.5em;
+  }
+}

@@ -32,6 +32,10 @@ export class TodoFacade {
     this.store.dispatch(actionsFromTodo.startTodo({ payload }));
   }
 
+  finishTodo(payload: Todo): void {
+    this.store.dispatch(actionsFromTodo.finishTodo({ payload }));
+  }
+
   loadTodos(payload: LoadItems): void {
     this.store.dispatch(actionsFromTodo.loadTodos({ payload }));
   }

@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/app/learning-stuff/learned-stuff-shell/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/app/learning-stuff/learned-stuff-shell"],
+      "options": {
+        "project": "libs/app/learning-stuff/learned-stuff-shell/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/app/learning-stuff/learned-stuff-shell/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/app/learning-stuff/learned-stuff-shell/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app/learning-stuff/learned-stuff-shell"],
+      "options": {
+        "jestConfig": "libs/app/learning-stuff/learned-stuff-shell/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/app/learning-stuff/learned-stuff-shell/**/*.ts",
+          "libs/app/learning-stuff/learned-stuff-shell/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

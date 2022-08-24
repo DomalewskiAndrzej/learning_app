@@ -5,7 +5,7 @@ import { Todo } from '@app/app/to-do/domain';
 import { TodoFacade } from '@app/app/to-do/data-access';
 import { HomeFacade, RoutingFacade } from '@app/shared/data-access';
 import { TodoDialogService } from '@app/app/to-do/shared/services';
-import { LoadItems } from '@app/shared/domain';
+import { LoadItems, NAVIGATION_PATHS } from '@app/shared/domain';
 
 @Component({
   selector: 'app-feature-feature-to-do-table-table',
@@ -37,7 +37,7 @@ export class FeatureToDoTableComponent {
 
   openTodos(todos: Todo[]): void {
     this.todoFacade.selectTodos(todos);
-    this.routingFacade.navigate({ path: 'to-do/preview' });
+    this.routingFacade.navigate({ path: NAVIGATION_PATHS.todoPreview });
   }
 
   editTodo(todo: Todo): void {

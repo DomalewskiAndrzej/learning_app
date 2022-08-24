@@ -1,0 +1,104 @@
+<mat-tab-group class="container">
+  <mat-tab
+    *ngFor="let label of AVAILABLE_LEARNED_STUFF | keyvalue; trackBy: trackByFn"
+    [label]="label.key | labelName"
+  >
+    <ng-container
+      [ngTemplateOutletContext]="{
+        article: AVAILABLE_LEARNED_STUFF[label.key],
+        label: label.value
+      }"
+      [ngTemplateOutlet]="
+        !!availableTemplates[label.key]
+          ? availableTemplates[label.key]
+          : appArticle
+      "
+    >
+    </ng-container>
+  </mat-tab>
+</mat-tab-group>
+
+<ng-template
+  [appCustomTemplateRef]="[AvailableLearnedStuffName['globalErrorHandling']]"
+>
+  <app-global-error-handling></app-global-error-handling>
+</ng-template>
+
+<ng-template
+  [appCustomTemplateRef]="[AvailableLearnedStuffName['asyncPipeWithNgIf']]"
+>
+  <ng-container
+    *ngIf="{
+      asyncPipeVariable: asyncPipeObservable$ | async,
+      asyncPipeError: asyncPipeError$ | async
+    } as viewModel"
+  >
+    <app-async-pipe-with-ng-if
+      [asyncPipeVariable]="viewModel.asyncPipeVariable"
+    ></app-async-pipe-with-ng-if>
+    <hr />
+    <app-async-pipe-with-ng-if
+      *ngIf="viewModel.asyncPipeVariable as data"
+      [asyncPipeVariable]="data"
+    ></app-async-pipe-with-ng-if>
+    <mat-error *ngIf="viewModel.asyncPipeError as error">{{ error }}</mat-error>
+    <hr />
+    <app-async-pipe-with-ng-if
+      *ngIf="viewModel.asyncPipeVariable && !viewModel.asyncPipeError"
+      [asyncPipeVariable]="viewModel.asyncPipeVariable"
+    ></app-async-pipe-with-ng-if>
+    <mat-error *ngIf="viewModel.asyncPipeError as error">{{ error }}</mat-error>
+  </ng-container>
+</ng-template>
+
+<ng-template
+  [appCustomTemplateRef]="[
+    AvailableLearnedStuffName['changeDetection'],
+    AvailableLearnedStuffName['rxjs'],
+    AvailableLearnedStuffName['directivesAndPipes'],
+    AvailableLearnedStuffName['angularArchitecture']
+  ]"
+  let-article="article"
+  let-label="label"
+>
+  <mat-tab-group class="container__change-detection">
+    <mat-tab
+      *ngFor="let l of $any(label) | keyvalue"
+      [label]="l.key | labelName"
+    >
+      <ng-container
+        *ngTemplateOutlet="
+          !!availableTemplates[$any(l.key)]
+            ? availableTemplates[$any(l.key)]
+            : appArticle;
+          context: { article: article[$any(l.key)] }
+        "
+      >
+      </ng-container>
+    </mat-tab>
+  </mat-tab-group>
+</ng-template>
+
+<ng-template
+  [appCustomTemplateRef]="[
+    AvailableLearnedStuffName['changeDetectionZoneJsBasics']
+  ]"
+  let-article="article"
+>
+  <app-article [article]="article">
+    <ng-template #exampleOnBottom>
+      <h1>Zones and async lifecycle hooks</h1>
+      <p>Run tasks outside NgZone examples:</p>
+      <img [src]="runOutsideCDimg" alt="Run outside CD" />
+      <hr class="horizontal-line" />
+      <img
+        [src]="thirdPartyLibrariesWithCDimg"
+        alt="Third party libraries with CD"
+      />
+    </ng-template>
+  </app-article>
+</ng-template>
+
+<ng-template #appArticle let-article="article">
+  <app-article [article]="article"></app-article>
+</ng-template>

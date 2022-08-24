@@ -10,7 +10,7 @@
   </div>
   <div class="container__table">
     <table [dataSource]="dataSource" mat-table>
-      <ng-container matColumnDef="id">
+      <ng-container matColumnDef="id">`
         <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
         <mat-cell *matCellDef="let todo" class="container__table--id">
           <mat-checkbox
@@ -39,7 +39,7 @@
               todosSelection.isSelected(todo)
             "
             [matTooltip]="todo.information.description"
-            >{{ todo.information.name }}</span
+          >{{ todo.information.name }}</span
           >
         </mat-cell>
       </ng-container>
@@ -87,7 +87,6 @@
       ></app-ui-load-items-button>
     </div>
     <mat-paginator
-      (page)="onLoadTodos(paginator.pageSize)"
       [length]="paginatorOptions.length"
       [pageIndex]="paginatorOptions.pageIndex"
       [pageSizeOptions]="paginatorOptions.pageSizeOptions"

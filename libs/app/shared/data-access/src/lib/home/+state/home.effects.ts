@@ -20,6 +20,7 @@ export class HomeEffects {
             action.type !== actionsFromHome.requestInProgress.type &&
             !action.type.includes('@ngrx/router-store') &&
             !action.type.includes('[Home]') &&
+            !action.type.includes('[Routing]') &&
             !action.type.includes('Select')
         )
       )

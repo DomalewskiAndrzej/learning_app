@@ -22,4 +22,11 @@ export const appConfig = {
     showFirstLastButtons: true,
     length: 5,
   },
-};
+  routingTypes: {
+    startingPage: '',
+    todo: 'to-do',
+    todoList: 'list',
+    todoPreview: 'preview',
+    loginPage: 'login',
+  },
+} as const;

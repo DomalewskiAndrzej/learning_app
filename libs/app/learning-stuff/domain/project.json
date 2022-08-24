@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/app/learning-stuff/domain/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/app/learning-stuff/domain"],
+      "options": {
+        "project": "libs/app/learning-stuff/domain/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/app/learning-stuff/domain/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/app/learning-stuff/domain/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app/learning-stuff/domain"],
+      "options": {
+        "jestConfig": "libs/app/learning-stuff/domain/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/app/learning-stuff/domain/**/*.ts",
+          "libs/app/learning-stuff/domain/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

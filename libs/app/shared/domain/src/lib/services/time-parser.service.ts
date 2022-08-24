@@ -8,12 +8,12 @@ export class TimeParser {
 
   calcTodoTimeToComplete(timeToComplete: string): number {
     const splittedTime = timeToComplete.split(':');
-    return +splittedTime[0] * 3600 + +splittedTime[0] * 60;
+    return +splittedTime[0] * 3600 + +splittedTime[1] * 60;
   }
 
   calcIfTodoIsOutdated(timeToComplete: string, dateOfStart: number): boolean {
     return (
-      this.calcTodoTimeToComplete(timeToComplete) + dateOfStart >
+      this.calcTodoTimeToComplete(timeToComplete) + dateOfStart <
       this.getCurrentParsedTime()
     );
   }

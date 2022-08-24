@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, pluck, switchMap } from 'rxjs';
-import { ToDoService } from '../services/to-do/to-do.service';
+import { ToDoService } from '../services/to-do.service';
 import { Todo } from '@app/app/to-do/domain';
 import { actionsFromTodo } from './to-do.actions';
 import { LoadItems, SnackbarService } from '@app/shared/domain';
@@ -47,15 +47,36 @@ export class TodoEffects {
       pluck('payload'),
       switchMap((todo: Todo) =>
         this.todoService.startTodo(todo).pipe(
-          map(() => {
+          map((todo) => {
             this.snackbarService.openSnackBar(
               `Successfully started todo: ${todo.information.name}`,
               'OK!'
             );
-            return actionsFromTodo.startTodoSuccess();
+            return actionsFromTodo.startTodoSuccess({ payload: todo });
           }),
           catchError((error: Error) =>
             of(actionsFromTodo.startTodoFailure({ error }))
+          )
+        )
+      )
+    )
+  );
+
+  finishTodo$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(actionsFromTodo.finishTodo),
+      pluck('payload'),
+      switchMap((todo: Todo) =>
+        this.todoService.finishTodo(todo).pipe(
+          map((todo) => {
+            this.snackbarService.openSnackBar(
+              `Successfully finished todo: ${todo.information.name}`,
+              'OK!'
+            );
+            return actionsFromTodo.finishTodoSuccess({ payload: todo });
+          }),
+          catchError((error: Error) =>
+            of(actionsFromTodo.finishTodoFailure({ error }))
           )
         )
       )

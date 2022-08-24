@@ -1,0 +1,26 @@
+<app-ui-sidenav
+  (navigateTo)="navigateTo($event)"
+  [navigationLink]="navigationLinks"
+  [routingUrl]="routingUrl$ | async"
+  [sidenav]="sidenav$ | async"
+>
+  <app-ui-toolbar
+    (loadNotifications)="loadNotifications($event)"
+    (loadTodosInProgressNotifications)="
+      loadTodosInProgressNotifications($event)
+    "
+    (navigateBack)="navigateBack()"
+    (openNotification)="openNotification($event)"
+    [notificationsQuantity]="notificationsQuantity$ | async"
+    [notificationsRequestInProgress]="notificationsRequestInProgress$"
+    [notifications]="notifications$ | async"
+    [requestInProgress]="requestInProgress$ | async"
+    [sidenav]="sidenav$ | async"
+    [todosInProgressNotificationsQuantity]="
+      todosInProgressNotificationsQuantity$ | async
+    "
+    [todosInProgressNotifications]="todosInProgressNotifications$ | async"
+  >
+    <router-outlet></router-outlet>
+  </app-ui-toolbar>
+</app-ui-sidenav>
